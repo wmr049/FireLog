@@ -1,0 +1,1 @@
+{"version":3,"file":"pedidos.component.js","sourceRoot":"","sources":["pedidos.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAkC,eAAe,CAAC,CAAA;AAQlD;IACI;IAAgB,CAAC;IAEjB,mCAAQ,GAAR,cAAa,CAAC;IATlB;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,aAAa;YACvB,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,WAAW,EAAE,wBAAwB;SACxC,CAAC;;wBAAA;IAMF,uBAAC;AAAD,CAAC,AAJD,IAIC;AAJY,wBAAgB,mBAI5B,CAAA"}
