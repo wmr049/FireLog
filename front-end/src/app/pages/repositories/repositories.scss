@@ -1,0 +1,175 @@
+/* A separate style to create free space below repository search box*/
+.repository-list-search {
+    margin-bottom: 1em;
+  }
+
+.pager {
+  padding-left: 0;
+  margin: 20px 0;
+  text-align: center;
+  list-style: none;
+}
+
+.pager li{
+  display: inline;
+}
+
+.pager li > a, .pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+
+}
+
+.pager .previous > a, .pager
+.previous > span{
+  float: left;
+}
+
+.pager .next > a, .pager
+.next > span{
+  float: right;
+}
+
+nav{
+  box-sizing: border-box;
+}
+
+ul.no-bullet {
+  list-style: none;
+  margin-left: 0;
+}
+
+
+//repositorio lista
+.RepositoryListItem__repositoryListItem{
+  background: #fff;
+  border: 1px solid #c4cdda;
+  border-radius: 3px;
+  color: #3f5167;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.RepositoryListItem__flexible{
+  display: flex;
+  flex: 1;
+}
+
+.RepositoryListItem__head{
+  border-left: 0;
+  flex-grow: 1;
+  flex-flow: row;
+}
+
+.RepositoryListItem__section{
+  display: flex;
+  border-left: 1px solid #c4cdda;
+  padding: 1rem;
+}
+
+.RepositoryListItem__stats{
+  min-width: 100px;
+  text-align: center;
+  -ms-flex-flow: row;
+  flex-flow: row;
+}
+
+.RepositoryListItem__action{
+  background-color: #c4cdda;
+  color: #7a8491;
+  -ms-flex-flow: column;
+  flex-flow: column;
+}
+
+.RepositoryListItem__avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 3px;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.RepositoryListItem__title{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.RepositoryListItem__img{
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  border: 0;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
+a img {
+    border: none;
+}
+
+.RepositoryListItem__labels{
+  color: #7a8491;
+}
+
+.RepositoryListItem__repoName{
+  color: #22b8eb;
+}
+
+.RepositoryListItem__public{
+  color: #216880;
+}
+
+.RepositoryListItem__automated{
+  color: #7a8491;
+}
+
+.RepositoryListItem__labelValue{
+  padding-top: .25rem;
+  margin: 0 auto;
+}
+
+.RepositoryListItem__value{
+  color: #7a8491;
+  margin-bottom: .25rem;
+}
+
+.RepositoryListItem__subLabel{
+  color: #7a8491;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-chevron-right {
+
+}
+
+.fa-lg{
+  font-size: 1.33333333em;
+  line-height: .75em;
+  vertical-align: -15%;
+}
+
+.RepositoryListItem__text{
+  margin-top: 1.2rem;
+  margin-left: .4rem;
+  font-size: .7rem;
+}

@@ -1,0 +1,113 @@
+{
+    "login": {
+      "title": "Entre no Gerenciado de Docker",
+      "signup_link": "Novo no Gerenciador de Docker? Inscreva-se!",
+      "email": "Email",
+      "password": "Senha",
+      "sign_in": "Entrar",
+      "forgot_password": "Esqueceu o password?",
+      "sign_from_app_text": "ou Entre com um Click",
+      "share_on_facebook": "Compartilhe no Facebook",
+      "share_on_twitter": "Compartilhe no Twitter",
+      "share_on_google_plus": "Compartilhe no Google Plus"
+    },
+    "general": {
+      "exxatech": "ExxaTech",
+      "home": "Inicio",
+      "forms": {
+        "option1": "Opção 1"
+      },
+      "menu": {
+        "dashboard": "Painel de Controle",
+        "main": "Principal",
+        "repositories": "Repositórios",
+        "editors": "Editores",
+        "ck_editor": "CKEditor",
+        "components": "Componentes",
+        "tree_view": "Vista em Árvore",
+        "charts": "Gráficos",
+        "chartist_js": "Chartist.Js",
+        "ui_features": "Caracteristicas UI",
+        "typography": "Tipografia",
+        "buttons": "Botões",
+        "icons": "Icones",
+        "modals": "Modais",
+        "grid": "Grid",
+        "form_elements": "Formulário",
+        "form_inputs": "Formulários Inputs",
+        "form_layouts": "Formulário Layout",
+        "tables": "Tabelas",
+        "basic_tables": "Tabelas Basicas",
+        "smart_tables": "Tabelas Inteligentes",
+        "maps": "Mapas",
+        "google_maps": "Google Maps",
+        "leaflet_maps": "Folheto Maps",
+        "bubble_maps": "Bolha Maps",
+        "line_maps": "Linha Maps",
+        "pages": "Paginas",
+        "login": "Entrar",
+        "register": "Registrar",
+        "menu_level_1": "Menu Level 1",
+        "menu_level_1_1": "Menu Level 1.1",
+        "menu_level_1_2": "Menu Level 1.2",
+        "menu_level_1_2_1": "Menu Level 1.2.1",
+        "external_link": "Linq Externo"
+      },
+      "created_with": "Criado Com"
+    },
+    "repositories":{
+      "default": "Repositórios"
+    },
+    "dashboard": {
+      "acquisition_channels": "Canais de Aquisição",
+      "users_by_country": "Usuarios por Pais",
+      "revenue": "Receita",
+      "feed": "Alimentação",
+      "todo_list": "Lista a Fazer",
+      "calendar": "Calendario",
+      "new_visits": "Novas Visitas",
+      "purchases": "Compras",
+      "active_users": "Usuarios Ativos",
+      "returned": "Retornados",
+      "popular_app": {
+        "super_app": "Super App",
+        "most_popular_app": "Aplicação mais populares",
+        "total_visits": "Vistas Totais",
+        "new_visits": "Novas Visitas",
+        "sales": "Vendas"
+      },
+      "todo": {
+        "task_todo": "Tarefas a fazer.."
+      },
+      "traffic_chart": {
+        "view_total": "Total de Visualizações"
+      }
+    },
+    "tree_view": {
+      "title": "basico",
+      "programming": "Linguagens de Programação por Paradigma de Programação",
+      "oop": "Programação Orientada a Objeto",
+      "java": "Java",
+      "c_plus_plus": "C++",
+      "c_sharp": "C#",
+      "prototype": "Programação baseada em Protótipo",
+      "java_script": "JavaScript",
+      "coffee_script": "CoffeeScript",
+      "lua": "Lua"
+    },
+    "chart": {
+      "lines": "Linhas",
+      "bars": "Barras",
+      "simple_line_chart": "Grafico Simples em linha",
+      "line_chart": "Grafico em linha com area",
+      "bi_polar_line_chart": "Gráfico de linha bi-polar com área apenas",
+      "simple_bar_chart": "Grafico simples em barra",
+      "multi_line_labels_bar_chart": "Gráfico de linha bi-polar com área apenas",
+      "stacked_bar_chart": "Gráfico de barras empilhadas",
+      "pies_and_donuts": "Pies & Donuts",
+      "simple_pie": "Pie Simples",
+      "pie_with_labels": "Pie com rotulos",
+      "donut": "Donut"
+    }
+  }
+  
