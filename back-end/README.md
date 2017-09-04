@@ -6,33 +6,36 @@ Api construido com as seguintes Tecnologias:
 * Express 4.15.4
 * Mongoose 4.11.8
 
-  . Métodos API Gateway
+## Métodos API Gateway
   
-  ===========================
-  
-## Criar Mensagem
-#### POST/api/v2/messages
+### Criar Mensagem
+###### POST/api/v2/messages
 O corpo deve conter uma mensagem em formato JSON ou XML. Na criação bem-sucedida, um código de status HTTP com valor 201 é retornado, incluindo um cabeçalho de localização para indicar onde o recurso criado pode ser solicitado.
 
-* __Requesição__
+__Requisição__
 
-* Parametros
-    * logid
-    * required	GUID	O ID do log que você gostaria de adicionar a nova mensagem para
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+logid *__required__ | GUID | O ID do log que você gostaria de adicionar a nova mensagem para
 
-* __Exemplo__
 
-* POST
-**https://logfire.exxatech.com.br/api/v2/messages?logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
 
+__Exemplo__
+
+__POST__
+
+- https://logfire.exxatech.com.br/api/v2/messages?logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
+
+```
 Body
 {
     "title": "Este é uma mensagem de Teste"
 }
+```
 
-* __Respostas__
+__Respostas__
 
-*__Códigos__
+__Códigos__
 
 ```
     200             Not Created	A mensagem não foi criada.
@@ -42,27 +45,36 @@ Body
 ```
 
 
-Exemplo
+__Exemplo__
+
 201 (Created)
+
 HTTP Header
+
 Location: https://logfire.exxatech.com.br/api/v2/messages?id=6707A1B0A79C8E85&logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
+
 ________________________________________
-Buscar uma mensagem
-GET/api/v2/messages
+
+### Buscar uma mensagem
+##### GET/api/v2/messages
+
 Retorna uma única mensagem por sua identificação e logid. Se a mensagem for encontrada, a solicitação retornará um código de status 200.
-Request
-Parametros
-logid
-required	GUID	O id do log do qual você gostaria de receber a mensagem
-id
-required	string	O id da mensagem que você gostaria de obter.
+
+__Requesição__
+
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+logid *__required__ | GUID | O id do log do qual você gostaria de receber a mensagem
+id *__required__ | string | O id da mensagem que você gostaria de obter.
 
 
-Exemplo
-GEThttps://logfire.exxatech.com.br/api/v2/messages?id=6707A1B0A79C8E85&logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
+__Exemplo__
+
+GET     https://logfire.exxatech.com.br/api/v2/messages?id=6707A1B0A79C8E85&logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
 
 
 Resposta
+
 Codes
 200	OK	Mensagem encontrada
 404	Not Found	Mensagem não encontrada
@@ -76,23 +88,22 @@ Body
 }
 
 ________________________________________
-Buscar Mensagens
-GET/api/v2/messages
+
+### Buscar Mensagens
+##### GET/api/v2/messages
+
 Retorna uma lista de objetos de mensagem por sua logid. Estas páginas de solicitação resultam pelos parâmetros pageIndex e pageSize. As mensagens meteorológicas ou não são encontradas, a solicitação retorna o código de status 200 enquanto a logid for encontrada.
-Request
-Parametros
-logid
-required	GUID	O id do log do qual você gostaria de receber as mensagens
-query
-optional	string	Uma consulta de texto completo ou Lucene para limitar as mensagens por.
-from
-optional	datetime	Uma data e hora de início para pesquisar de (não incluído).
-to
-optional	datetime	Uma data e hora de término para pesquisar (não incluído).
-pageindex
-optional	number	A página para iniciar ou 0 se não estiver configurada.
-pagesize
-optional	number	O número de mensagens para carregar (máximo 100) ou 15, se não estiver definido.
+
+__Requesição__
+
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+logid *__required__ | GUID | O id do log do qual você gostaria de receber as mensagens
+query *__optional__ | string | Uma consulta de texto completo ou Lucene para limitar as mensagens por.
+from *__optional__ | datetime | Uma data e hora de início para pesquisar de (não incluído).
+to *__optional__ | datetime | Uma data e hora de término para pesquisar (não incluído).
+pageindex *__optional__ | number | A página para iniciar ou 0 se não estiver configurada.
+pagesize *__optional__ | number | O número de mensagens para carregar (máximo 100) ou 15, se não estiver definido.
 
 
 Exemplo
@@ -121,16 +132,18 @@ Body
     "total": 21
 }
 ________________________________________
-Deletar Mensagem
-DELETE/api/v2/messages
+
+### Deletar Mensagem
+##### DELETE/api/v2/messages
+
 Exclui uma única mensagem por sua identificação e logid. Se a mensagem for excluída, a solicitação retornará um código de status 200..
 
-Request
-Parameters
-logid
-required	GUID	O ID do log do qual você deseja excluir a mensagem
-id
-required	string	A identificação da mensagem que você gostaria de excluir.
+__Requesição__
+
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+logid *__required__ | GUID | O ID do log do qual você deseja excluir a mensagem
+id *__required__ | string | A identificação da mensagem que você gostaria de excluir.
 
 
 Exemplo
@@ -143,17 +156,24 @@ Códigos
 402	Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura Enterprise.
 404	Not Found	Mensagem não encontrada.
 ________________________________________
-Excluir Mensagens
-DELETE/api/v2/messages
+
+### Excluir Mensagens
+##### DELETE/api/v2/messages
+
 Exclui uma lista de mensagens por logid e query. Se as mensagens forem excluídas, a solicitação retornará um código de status 200.
-Request
-Parameters
-logid
-required	GUID	O id do log do qual você gostaria de excluir as mensagens
+
+__Requesição__
+
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+logid *__required__ | GUID | O id do log do qual você gostaria de excluir as mensagens
 
 
 Exemplo
-DELETEhttps://logfire.exxatech.com.br/api/v2/messages?logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
+
+DELETE
+https://logfire.exxatech.com.br/api/v2/messages?logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
+
 Body
 {
     "query": "This is a test message",
@@ -163,21 +183,25 @@ Body
 
 
 Respostas
+
 Códigos
+
 200	OK	Mensagem deletada
 400	Bad Request	Problema com a query
 402	Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura Enterprise.
 404	Not Found	Log não encontrado
 ________________________________________
-Esconder mensagem 
-POST/api/v2/messages/_hide
+
+### Esconder mensagem 
+##### POST/api/v2/messages/_hide
 Esconde uma única mensagem por sua identificação e logid. Se a mensagem estiver oculta, a solicitação retorna um código de status 200.
-Request
-Parametros
-logid
-required	GUID	O id do log do qual você gostaria de ocultar a mensagem
-id
-required	string	O id da mensagem que você gostaria de esconder.
+
+__Requesição__
+
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+logid *__required__ | GUID | O id do log do qual você gostaria de ocultar a mensagem
+id *__required__ | string | O id da mensagem que você gostaria de esconder.
 
 
 Exemplo
@@ -190,44 +214,29 @@ Códigos
 402	Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura.
 404	Not Found	Mensagem não encontrada
 ________________________________________
-Mensagem
+
+### Mensagem
 
 
-Parametros
-title
-required	String	O título textual ou título da mensagem para logar.
-application
-optional	String	Usado para identificar qual aplicativo registrou esta mensagem. Você pode usar isso se você tiver vários logs de aplicativos e serviços no mesmo registro.
-cookies
-optional	Key/Value	Um par de chaves / valores de cookies. Esta propriedade só faz sentido para registrar mensagens relacionadas a solicitações da web.
-data
-optional	Key/Value	Um par chave / valor de campos definidos pelo usuário e seus valores. Ao registrar uma exceção, o dicionário de dados da exceção é copiado para esta propriedade. Você pode adicionar pares de chaves / valores adicionais, modificando o dicionário de dados na exceção ou fornecendo chaves / valores adicionais para esta API.
-dateTime
-optional	String	A data e hora em UTC da mensagem. Se você não nos fornecer um valor em DateTime, nós definiremos a data e a hora atuais em UTC.
-detail
-optional	String	Uma descrição mais longa da mensagem. Para erros, isso pode ser um stacktrace, mas é realmente sobre você o que fazer para fazer login.
-form
-optional	Key/Value	Um par chave / valor de campos de formulário e seus valores. Essa propriedade faz sentido se a mensagem de logon estiver relacionada aos usuários que inserem dados em um formulário.
-hostname
-optional	String	O nome do host do servidor que registra a mensagem.
-queryString
-optional	Key/Value	Uma par chave / valor de parâmetros de sequência de consulta. Esta propriedade faz sentido se a mensagem de logon estiver relacionada a uma solicitação HTTP.
-source
-optional	String	A fonte do código que registra a mensagem. Este poderia ser o nome da assembléia.
-serverVariables
-optional	Key/Value	Um par de chave / valor de servidor. As variáveis de servidor geralmente estão relacionadas ao gerenciamento de solicitações em um servidor web, mas também podem ser usadas para outros tipos de informações.
-severity
-optional	String	Um valor de enum representando a gravidade desta mensagem. Os seguintes valores são permitidos: Verbose, Debug, Information, Warning, Error, Fatal
-statusCode
-optional	Number	Se a mensagem registrada estiver relacionada a um código de status HTTP, você pode colocar o código nesta propriedade. Isso provavelmente só seria relevante para erros, mas também poderia ser usado para registrar códigos de status bem-sucedidos.
-type
-optional	String	O tipo de mensagem. Se logar um erro, o tipo da exceção entraria no tipo, mas você pode colocar qualquer coisa lá, isso faz sentido para o seu domínio.
-url
-optional	String	Se a mensagem se relaciona com uma solicitação HTTP, você pode enviar o URL desse pedido. Se você não nos fornecer um URL, tentaremos encontrar uma chave chamada URL em serverVariables.
-user
-optional	String	Uma identificação do usuário que desencadeia esta mensagem. Você pode colocar o endereço de e-mail dos usuários ou sua chave de usuário nesta propriedade.
-version
-optional	String	As versões podem ser usadas para distinguir mensagens de diferentes versões do seu software. O valor da versão pode ser uma seqüência compatível com SemVer ou qualquer outra sintaxe que você está usando como seu esquema de numeração de versão.
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+title *__required__ | String | O título textual ou título da mensagem para logar.
+application *__optional__ | String | Usado para identificar qual aplicativo registrou esta mensagem. Você pode usar isso se você tiver vários logs de aplicativos e serviços no mesmo registro.
+cookies *__optional__ | Key/Value | Um par de chaves / valores de cookies. Esta propriedade só faz sentido para registrar mensagens relacionadas a solicitações da web.
+data *__optional__ | Key/Value | Um par chave / valor de campos definidos pelo usuário e seus valores. Ao registrar uma exceção, o dicionário de dados da exceção é copiado para esta propriedade. Você pode adicionar pares de chaves / valores adicionais, modificando o dicionário de dados na exceção ou fornecendo chaves / valores adicionais para esta API.
+dateTime *__optional__ | String | A data e hora em UTC da mensagem. Se você não nos fornecer um valor em DateTime, nós definiremos a data e a hora atuais em UTC.
+detail *__optional__ | String | Uma descrição mais longa da mensagem. Para erros, isso pode ser um stacktrace, mas é realmente sobre você o que fazer para fazer login.
+form *__optional__ | Key/Value | Um par chave / valor de campos de formulário e seus valores. Essa propriedade faz sentido se a mensagem de logon estiver relacionada aos usuários que inserem dados em um formulário.
+hostname *__optional__ | String | O nome do host do servidor que registra a mensagem.
+queryString *__optional__ | Key/Value | Uma par chave / valor de parâmetros de sequência de consulta. Esta propriedade faz sentido se a mensagem de logon estiver relacionada a uma solicitação HTTP.
+source *__optional__ | String | A fonte do código que registra a mensagem. Este poderia ser o nome da assembléia.
+serverVariables *__optional__ | Key/Value | Um par de chave / valor de servidor. As variáveis de servidor geralmente estão relacionadas ao gerenciamento de solicitações em um servidor web, mas também podem ser usadas para outros tipos de informações.
+severity *__optional__ | String | Um valor de enum representando a gravidade desta mensagem. Os seguintes valores são permitidos: Verbose, Debug, Information, Warning, Error, Fatal
+statusCode *__optional__ | Number | Se a mensagem registrada estiver relacionada a um código de status HTTP, você pode colocar o código nesta propriedade. Isso provavelmente só seria relevante para erros, mas também poderia ser usado para registrar códigos de status bem-sucedidos.
+type *__optional__ | String | O tipo de mensagem. Se logar um erro, o tipo da exceção entraria no tipo, mas você pode colocar qualquer coisa lá, isso faz sentido para o seu domínio.
+url *__optional__ | String | Se a mensagem se relaciona com uma solicitação HTTP, você pode enviar o URL desse pedido. Se você não nos fornecer um URL, tentaremos encontrar uma chave chamada URL em serverVariables.
+user *__optional__ | String | Uma identificação do usuário que desencadeia esta mensagem. Você pode colocar o endereço de e-mail dos usuários ou sua chave de usuário nesta propriedade.
+version *__optional__ | String | As versões podem ser usadas para distinguir mensagens de diferentes versões do seu software. O valor da versão pode ser uma seqüência compatível com SemVer ou qualquer outra sintaxe que você está usando como seu esquema de numeração de versão.
 
 
 Exemplo
@@ -267,17 +276,18 @@ Body
     "version": "1.2.3"
 }
 ________________________________________
-Query
+
+### Query
 
 
-Parametros
-query
-required	String	O texto a ser procurado ou a sintaxe do Lucene Query.
-from
-optional	DateTime	A data e hora para pesquisar. Se você não nos fornecer um valor, buscaremos desde o início dos tempos.
-to
-optional	DateTime	A data e hora para pesquisar. Se você não nos fornecer um valor, buscaremos o fim do tempo.
+Parametros | Tipo | Valor
+------------ | ------------- | -------------
+query *__required__ | String | O texto a ser procurado ou a sintaxe do Lucene Query.
+from *__optional__ | DateTime | A data e hora para pesquisar. Se você não nos fornecer um valor, buscaremos desde o início dos tempos.
+to *__optional__ | DateTime | A data e hora para pesquisar. Se você não nos fornecer um valor, buscaremos o fim do tempo.
+
 Example
+
 Body
 {
     "query": "This is a test message",
