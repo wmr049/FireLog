@@ -29,7 +29,7 @@ __POST__
 ```
 Body
 {
-    "title": "Este é uma mensagem de Teste"
+    "title": "Esta é uma mensagem de Teste"
 }
 ```
 
@@ -87,7 +87,7 @@ Exemplo:
 ```
 Body
 {
-    "title": "This is a test message"
+    "title": "Esta é uma mensagem de Teste"
 }
 ```
 
@@ -131,10 +131,10 @@ Body
     "messages":
         [
             {
-                "title": "This is the first test message"
+                "title": "Esta é uma primeira mensagem de Teste"
             },
             {
-                "title": "This is the second test message"
+                "title": "Esta á uma segunda mensagem de Teste"
             },
             ...
         ],
@@ -272,21 +272,21 @@ Exemplo
 ```
 Body
 {
-    "title": "This is a test message",
-    "application": "elmah.io Website",
+    "title": "Esta é uma mensagem de Teste",
+    "application": "meusistema.com.br API",
     "cookies": [
         {"key": "Version", "value": "2"},
-        {"key": "Language", "value": "English"}
+        {"key": "Language", "value": "Portugues"}
     ],
     "data": [
-        {"key": "Hello", "value": "World"},
+        {"key": "Ola", "value": "Mundo"},
         {"key": "Foo", "value": "Bar"}
     ],
     "dateTime": "2014-11-28T20:55:26+00:00",
-    "detail": "This is a very long description telling more details about this message",
+    "detail": "Esta é uma descrição muito longa, informando mais detalhes sobre esta mensagem",
     "form": [
-        {"key": "Firstname", "value": "Thomas"},
-        {"key": "Lastname", "value": "Ardal"}
+        {"key": "Firstname", "value": "Milton"},
+        {"key": "Lastname", "value": "Reis"}
     ],
     "hostname": "Webserver01",
     "queryString": [
@@ -302,7 +302,7 @@ Body
     "statusCode": 200,
     "url": "http://somedomain.com/some/path",
     "type": "string",
-    "user": "info@elmah.io",
+    "user": "milton.reis",
     "version": "1.2.3"
 }
 ```
