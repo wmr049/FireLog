@@ -6,8 +6,11 @@ Api construido com as seguintes Tecnologias:
 * Express 4.15.4
 * Mongoose 4.11.8
 
-Criar Mensagem
-POST/api/v2/messages
+  . Métodos API Gateway
+  ===========================
+  
+## Criar Mensagem
+####POST/api/v2/messages
 O corpo deve conter uma mensagem em formato JSON ou XML. Na criação bem-sucedida, um código de status HTTP com valor 201 é retornado, incluindo um cabeçalho de localização para indicar onde o recurso criado pode ser solicitado.
 Request
 Parametros
