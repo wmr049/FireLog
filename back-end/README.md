@@ -7,19 +7,20 @@ Api construido com as seguintes Tecnologias:
 * Mongoose 4.11.8
 
   . Métodos API Gateway
+  
   ===========================
   
 ## Criar Mensagem
 #### POST/api/v2/messages
 O corpo deve conter uma mensagem em formato JSON ou XML. Na criação bem-sucedida, um código de status HTTP com valor 201 é retornado, incluindo um cabeçalho de localização para indicar onde o recurso criado pode ser solicitado.
 
-* __Requesição__*
+* __Requesição__
 
 * Parametros
     * logid
     * required	GUID	O ID do log que você gostaria de adicionar a nova mensagem para
 
-* __Exemplo__*
+* __Exemplo__
 
 * POST
 **https://logfire.exxatech.com.br/api/v2/messages?logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
@@ -29,14 +30,16 @@ Body
     "title": "Este é uma mensagem de Teste"
 }
 
-* __Respostas__*
+* __Respostas__
 
-*__Códigos__*
+*__Códigos__
+
+```
     200             Not Created	A mensagem não foi criada.
     201	            Created	A mensagem foi criada com sucesso.
     403	            Forbidden	O limite de solicitação alcançado e a mensagem não foram criadas.
     404	            Not Found	Log ID não encontrado.
-
+```
 
 
 Exemplo
