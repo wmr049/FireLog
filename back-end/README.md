@@ -15,7 +15,7 @@ O corpo deve conter uma mensagem em formato JSON ou XML. Na criação bem-sucedi
 __Requisição__
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 logid *__required__ | GUID | O ID do log que você gostaria de adicionar a nova mensagem para
 
 
@@ -38,10 +38,10 @@ __Respostas__
 __Códigos__
 
 ```
-    200             Not Created	A mensagem não foi criada.
-    201	            Created	A mensagem foi criada com sucesso.
-    403	            Forbidden	O limite de solicitação alcançado e a mensagem não foram criadas.
-    404	            Not Found	Log ID não encontrado.
+    200             Not                 Created	A mensagem não foi criada.
+    201	            Created	            A mensagem foi criada com sucesso.
+    403	            Forbidden	        O limite de solicitação alcançado e a mensagem não foram criadas.
+    404	            Not Found	        Log ID não encontrado.
 ```
 
 
@@ -63,7 +63,7 @@ Retorna uma única mensagem por sua identificação e logid. Se a mensagem for e
 __Requesição__
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 logid *__required__ | GUID | O id do log do qual você gostaria de receber a mensagem
 id *__required__ | string | O id da mensagem que você gostaria de obter.
 
@@ -76,16 +76,20 @@ GET     https://logfire.exxatech.com.br/api/v2/messages?id=6707A1B0A79C8E85&logi
 Resposta
 
 Codes
-200	OK	Mensagem encontrada
-404	Not Found	Mensagem não encontrada
 
+```
+    200         OK	                Mensagem encontrada
+    404	        Not Found	        Mensagem não encontrada
+```
 
 Exemplo:
 200
+```
 Body
 {
     "title": "This is a test message"
 }
+```
 
 ________________________________________
 
@@ -97,7 +101,7 @@ Retorna uma lista de objetos de mensagem por sua logid. Estas páginas de solici
 __Requesição__
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 logid *__required__ | GUID | O id do log do qual você gostaria de receber as mensagens
 query *__optional__ | string | Uma consulta de texto completo ou Lucene para limitar as mensagens por.
 from *__optional__ | datetime | Uma data e hora de início para pesquisar de (não incluído).
@@ -112,11 +116,16 @@ GEThttps://logfire.exxatech.com.br/api/v2/messages?logid=5082a1ce-c234-4c2e-92d4
 
 Resposta
 Códigos
-200	OK	Mensagem encontrada
-400	Bad Request	Alguma coisa errada aconteceu com os parâmetros da query.
-404	Not Found	Log não encontrado
+```
+    200         OK              Mensagem encontrada
+    400	        Bad Request	    Alguma coisa errada aconteceu com os parâmetros da query.
+    404	        Not Found	    Log não encontrado
+```
+
 Exemplo
 200
+
+```
 Body
 {
     "messages":
@@ -131,6 +140,7 @@ Body
         ],
     "total": 21
 }
+```
 ________________________________________
 
 ### Deletar Mensagem
@@ -141,20 +151,27 @@ Exclui uma única mensagem por sua identificação e logid. Se a mensagem for ex
 __Requesição__
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 logid *__required__ | GUID | O ID do log do qual você deseja excluir a mensagem
 id *__required__ | string | A identificação da mensagem que você gostaria de excluir.
 
 
 Exemplo
-DELETEhttps://logfire.exxatech.com.br/api/v2/messages?id=6707A1B0A79C8E85&logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
+
+DELETE
+
+https://logfire.exxatech.com.br/api/v2/messages?id=6707A1B0A79C8E85&logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
 
 
 Resposta
+
 Códigos
-200	OK	Mensagem excluída.
-402	Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura Enterprise.
-404	Not Found	Mensagem não encontrada.
+
+```
+    200         OK              Mensagem excluída.
+    402	        Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura Enterprise.
+    404	        Not Found	    Mensagem não encontrada.
+```
 ________________________________________
 
 ### Excluir Mensagens
@@ -165,7 +182,7 @@ Exclui uma lista de mensagens por logid e query. Se as mensagens forem excluída
 __Requesição__
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 logid *__required__ | GUID | O id do log do qual você gostaria de excluir as mensagens
 
 
@@ -175,21 +192,25 @@ DELETE
 https://logfire.exxatech.com.br/api/v2/messages?logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
 
 Body
+```
 {
     "query": "This is a test message",
     "from": "2016-05-25T07:00:00+00:00",
     "to": "2016-05-25T08:00:00+00:00",
 }
+```
 
 
 Respostas
 
 Códigos
 
-200	OK	Mensagem deletada
-400	Bad Request	Problema com a query
-402	Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura Enterprise.
-404	Not Found	Log não encontrado
+```
+200         OK              Mensagem deletada
+400	        Bad Request	    Problema com a query
+402	        Payment Request Tentando chamar esse ponto de extremidade sem uma assinatura Enterprise.
+404	        Not Found	    Log não encontrado
+```
 ________________________________________
 
 ### Esconder mensagem 
@@ -199,27 +220,34 @@ Esconde uma única mensagem por sua identificação e logid. Se a mensagem estiv
 __Requesição__
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 logid *__required__ | GUID | O id do log do qual você gostaria de ocultar a mensagem
 id *__required__ | string | O id da mensagem que você gostaria de esconder.
 
 
 Exemplo
-POSThttps://logfire.exxatech.com.br/api/v2/messages/_hide?id=6707A1B0A79C8E85&logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
+
+POST
+https://logfire.exxatech.com.br/api/v2/messages/_hide?id=6707A1B0A79C8E85&logid=5082a1ce-c234-4c2e-92d4-5c5bd5a72854
 
 
 Resposta
+
 Códigos
-200	OK	Mensagem escondida.
-402	Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura.
-404	Not Found	Mensagem não encontrada
+
+```
+200         OK              Mensagem escondida.
+402	        Payment Request	Tentando chamar esse ponto de extremidade sem uma assinatura.
+404	        Not Found	    Mensagem não encontrada
+```
+
 ________________________________________
 
 ### Mensagem
 
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 title *__required__ | String | O título textual ou título da mensagem para logar.
 application *__optional__ | String | Usado para identificar qual aplicativo registrou esta mensagem. Você pode usar isso se você tiver vários logs de aplicativos e serviços no mesmo registro.
 cookies *__optional__ | Key/Value | Um par de chaves / valores de cookies. Esta propriedade só faz sentido para registrar mensagens relacionadas a solicitações da web.
@@ -240,6 +268,8 @@ version *__optional__ | String | As versões podem ser usadas para distinguir me
 
 
 Exemplo
+
+```
 Body
 {
     "title": "This is a test message",
@@ -275,22 +305,25 @@ Body
     "user": "info@elmah.io",
     "version": "1.2.3"
 }
+```
 ________________________________________
 
 ### Query
 
 
 Parametros | Tipo | Valor
------------- | ------------- | -------------
+------------------ | ------------- | -------------
 query *__required__ | String | O texto a ser procurado ou a sintaxe do Lucene Query.
 from *__optional__ | DateTime | A data e hora para pesquisar. Se você não nos fornecer um valor, buscaremos desde o início dos tempos.
 to *__optional__ | DateTime | A data e hora para pesquisar. Se você não nos fornecer um valor, buscaremos o fim do tempo.
 
 Example
 
+```
 Body
 {
     "query": "This is a test message",
     "from": "2016-05-25T07:00:00+00:00",
     "to": "2016-05-25T08:00:00+00:00",
 }
+```
