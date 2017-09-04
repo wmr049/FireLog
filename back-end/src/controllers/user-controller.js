@@ -1,7 +1,7 @@
 'use strict';
 
 const ValidationContract = require('../validators/fluent-validator');
-const repository = require('../repositories/customer-repositorie')
+const repository = require('../repositories/user-repositorie')
 const md5 = require('md5');
 const authService = require('../services/auth-service');
 
@@ -44,12 +44,12 @@ exports.post = async(req, res, next) => {
 
 exports.authenticate = async(req, res, next) => {
     try {
-        const customer = await repository.authenticate({
+        const user = await repository.authenticate({
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY)
         });
 
-        if (!customer) {
+        if (!user) {
             res.status(404).send({
                 message: 'Usuário ou senha inválidos'
             });
@@ -57,17 +57,17 @@ exports.authenticate = async(req, res, next) => {
         }
 
         const token = await authService.generateToken({
-            id: customer._id,
-            email: customer.email,
-            name: customer.name,
-            roles: customer.roles
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            roles: user.roles
         });
 
         res.status(201).send({
             token: token,
             data: {
-                email: customer.email,
-                name: customer.name
+                email: user.email,
+                name: user.name
             }
         });
     } catch (e) {
@@ -82,9 +82,9 @@ exports.refreshToken = async(req, res, next) => {
         const token = req.body.token || req.query.token || req.headers['x-access-token'];
         const data = await authService.decodeToken(token);
 
-        const customer = await repository.getById(data.id);
+        const user = await repository.getById(data.id);
 
-        if (!customer) {
+        if (!user) {
             res.status(404).send({
                 message: 'Cliente não encontrado'
             });
@@ -92,17 +92,17 @@ exports.refreshToken = async(req, res, next) => {
         }
 
         const tokenData = await authService.generateToken({
-            id: customer._id,
-            email: customer.email,
-            name: customer.name,
-            roles: customer.roles
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            roles: user.roles
         });
 
         res.status(201).send({
             token: token,
             data: {
-                email: customer.email,
-                name: customer.name
+                email: user.email,
+                name: user.name
             }
         });
     } catch (e) {

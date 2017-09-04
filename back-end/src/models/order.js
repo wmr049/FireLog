@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    customer: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Customer'
+        ref: 'User'
     },
     number: {
         type: String,

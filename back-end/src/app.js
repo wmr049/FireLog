@@ -13,13 +13,13 @@ mongoose.connect(config.connectionString)
 
 //Carregar os Models
 const Product = require('./models/product');
-const Customer = require('./models/customer');
+const User = require('./models/user');
 const Order = require('./models/order');
 
 //Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');
-const customerRoute = require('./routes/customer-route');
+const userRoute = require('./routes/user-route');
 const orderRoute = require('./routes/order-route');
 
 app.use(bodyParser.json({
@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRoute);
 app.use('/products', productRoute);
-app.use('/customers', customerRoute);
+app.use('/users', userRoute);
 app.use('/orders', orderRoute);
 
 module.exports = app;

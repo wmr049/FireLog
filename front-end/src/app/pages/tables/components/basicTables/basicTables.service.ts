@@ -661,7 +661,7 @@ export class BasicTablesService {
 
   groups = [
     { id: 1, text: 'user' },
-    { id: 2, text: 'customer' },
+    { id: 2, text: 'user' },
     { id: 3, text: 'vip' },
     { id: 4, text: 'admin' }
   ];
