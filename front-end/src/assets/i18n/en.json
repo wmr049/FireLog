@@ -10,7 +10,7 @@
     "share_on_facebook": "Share on Facebook",
     "share_on_twitter": "Share on Twitter",
     "share_on_google_plus": "Share on Google Plus",
-    "sign_in_link": "Do you already have a Docker Manager account?"
+    "sign_in_link": "Do you already have a FirLog account?"
   },
   "login": {
     "title": "Sign in to firelog",
@@ -32,6 +32,10 @@
     },
     "menu": {
       "dashboard": "Dashboard",
+      "profile": "Profile",
+      "manager":"Manager",
+      "organization_manager":"Organization",
+      "organization_system":"Systens",
       "main": "Main",
       "repositories": "Repositories",
       "images": "Images",

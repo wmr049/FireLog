@@ -12,15 +12,15 @@ const router = express.Router();
 mongoose.connect(config.connectionString)
 
 //Carregar os Models
-const Product = require('./models/product');
+const Log = require('./models/log');
 const User = require('./models/user');
-const Order = require('./models/order');
+
 
 //Carrega as Rotas
 const indexRoute = require('./routes/index-route');
-const productRoute = require('./routes/product-route');
+const logRoute = require('./routes/log-route');
 const userRoute = require('./routes/user-route');
-const orderRoute = require('./routes/order-route');
+
 
 app.use(bodyParser.json({
     limit:'5mb'
@@ -38,9 +38,8 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRoute);
-app.use('/products', productRoute);
+app.use('/logs', logRoute);
 app.use('/users', userRoute);
-app.use('/orders', orderRoute);
 
 module.exports = app;
 

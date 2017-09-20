@@ -37,18 +37,18 @@ export class SeoService {
 
     private setTitle(newTitle: string) {
         if (StringUtils.isNullOrEmpty(newTitle)) {newTitle = 'Defina um Título'; }
-        this.titleService.setTitle(newTitle + ' - Gerenciador de Docker');
+        this.titleService.setTitle(newTitle + ' - Gerenciador de Log');
     }
 
     private setMetaDescription(description: string) {
         this.metaDescription = this.getOrCreateMetaElement('description');
-        if (StringUtils.isNullOrEmpty(description)) { description = 'Sistema para gerenciar containers no Docker Registry Privado'; }
+        if (StringUtils.isNullOrEmpty(description)) { description = 'Sistema para gerenciar Log gerados apartir de uma aplicação'; }
         this.metaDescription.setAttribute('content', description);
     }
 
     private setMetaKeywords(keywords: string) {
         this.metaKeywords = this.getOrCreateMetaElement('keywords');
-        if (StringUtils.isNullOrEmpty(keywords)) { keywords = 'docker,hub,registry,private,privado,devops'; }
+        if (StringUtils.isNullOrEmpty(keywords)) { keywords = 'log,excessão,falha,manager,gerenciador,firelog'; }
         this.metaKeywords.setAttribute('content', keywords);
     }
 

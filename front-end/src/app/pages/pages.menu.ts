@@ -6,7 +6,7 @@ export const PAGES_MENU = [
         path: 'main',  // path for our page
         data: { // custom menu declaration
           menu: {
-            title: 'general.menu.main', // menu title
+            title: 'general.menu.profile', // menu title
             icon: 'ion-android-home', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
@@ -15,11 +15,24 @@ export const PAGES_MENU = [
           },
         },
       },
+      
+      {
+        path: 'dashboard',
+        data: {
+          menu: {
+            title: 'general.menu.dashboard',
+            icon: 'ion-ios-pie-outline',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
       {
         path: 'repositories',
         data: {
           menu: {
-            title: 'general.menu.repositories',
+            title: 'general.menu.manager',
             icon: 'ion-ios-pie-outline',
             selected: false,
             expanded: false,
@@ -31,7 +44,15 @@ export const PAGES_MENU = [
             path: 'list-repositories',
             data: {
               menu: {
-                title: 'general.menu.images',
+                title: 'general.menu.organization_manager',
+              },
+            },
+          },
+          {
+            path: 'list-repositories',
+            data: {
+              menu: {
+                title: 'general.menu.organization_system',
               },
             },
           },
