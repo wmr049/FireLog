@@ -2,7 +2,7 @@
 
 const app = require('../src/app'); 
 const http = require('http');
-const debug = require('debug')('nodestr:server');
+const debug = require('debug')('firelog:server');
 
 
 const port = normalizePort(process.env.PORT || '3000');
@@ -41,11 +41,11 @@ function onError(error) {
 
     switch (error.code) {
         case 'EACCES':
-            console.error(bind + ' requer privilegios elevados');
+            console.error(bind + ' requer previlegios elevados');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            console.error(bind + ' ja esta em uso');
+            console.error(bind + ' já esta em uso');
             process.exit(1);
             break;    
         default:

@@ -8,7 +8,9 @@ const authService = require('../services/auth-service');
 const emailService = require('../services/email-service');
 
 exports.post = async(req, res, next) => {
+
     let contract = new ValidationContract();
+
     contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres');
     contract.isEmail(req.body.email, 'E-mail inválido');
     contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres');
@@ -24,17 +26,17 @@ exports.post = async(req, res, next) => {
             name: req.body.name,
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY),
+            cpf: req.body.cpf,
             roles: ["user"]
         });
 
         emailService.send(
             req.body.email,
-            'Bem vindo ao Node Store',
+            'Bem vindo ao Gerenciador de Docker',
             global.EMAIL_TMPL.replace('{0}', req.body.name));
 
-        res.status(201).send({
-            message: 'Cliente cadastrado com sucesso!'
-        });
+        this.authenticate(req, res, next);
+
     } catch (e) {
         res.status(500).send({
             message: 'Falha ao processar sua requisição'
@@ -60,14 +62,19 @@ exports.authenticate = async(req, res, next) => {
             id: user._id,
             email: user.email,
             name: user.name,
+            cpf: user.cpf,
             roles: user.roles
         });
 
-        res.status(201).send({
-            token: token,
+        res.status(201).send({            
             data: {
-                email: user.email,
-                name: user.name
+                user:{
+                    email: user.email,
+                    name: user.name,
+                    cpf: user.cpf,
+                    roles: user.roles
+                },                
+                token: token
             }
         });
     } catch (e) {
@@ -95,14 +102,19 @@ exports.refreshToken = async(req, res, next) => {
             id: user._id,
             email: user.email,
             name: user.name,
+            cpf: user.cpf,
             roles: user.roles
         });
 
-        res.status(201).send({
-            token: token,
+        res.status(201).send({            
             data: {
-                email: user.email,
-                name: user.name
+                user:{
+                    email: user.email,
+                    name: user.name,
+                    cpf: user.cpf,
+                    roles: user.roles
+                },                
+                token: token
             }
         });
     } catch (e) {

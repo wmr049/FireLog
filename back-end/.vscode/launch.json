@@ -6,7 +6,7 @@
             "request": "launch",
             "name": "nodemon",
             "runtimeExecutable": "nodemon",
-            "program": "${workspaceRoot}//node_modules//nodemon//bin//nodemon.js",
+            "program": "${workspaceRoot}/node_modules/nodemon/bin/nodemon.js",
             "restart": true,
             "console": "integratedTerminal",
             "args": ["${workspaceRoot}/bin/server.js"],

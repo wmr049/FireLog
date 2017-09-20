@@ -26,6 +26,16 @@ export const PAGES_MENU = [
             order: 0,
           },
         },
+        children: [
+          {
+            path: 'list-repositories',
+            data: {
+              menu: {
+                title: 'general.menu.images',
+              },
+            },
+          },
+        ],
       },
       /*
       {

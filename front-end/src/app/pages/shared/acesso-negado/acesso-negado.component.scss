@@ -1,0 +1,47 @@
+.page-error .error-number {
+  display: block;
+  font-size: 158px;
+  font-weight: 300;
+  letter-spacing: -10px;
+  line-height: 128px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.text-azure {
+  color: #209e91 !important;
+}
+
+.page-error .error-details {
+  display: block;
+  padding-top: 0;
+  text-align: center;
+}
+
+.error-full-page .page-error {
+  margin-top: 60px;
+}
+
+.page-error {
+  text-align: center;
+}
+
+.page-error .error-details .btn-return {
+  margin: 10px 0;
+}
+
+.btn-red:hover {
+  background-color: #da4f4a !important;
+  border-color: #da4f4a;
+  color: #ffffff;
+}
+
+.btn-red {
+  background-color: #C82E29;
+  border-color: #C82E29;
+  color: #ffffff;
+}
+
+.col-sm-offset-3 {
+    margin-left: 25%;
+}

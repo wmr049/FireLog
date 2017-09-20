@@ -1,7 +1,7 @@
 {
-  "name": "dockerregistryfront",
-  "version": "1.0.0",
-  "description": "Gerenciador do Docker Registry.",
+  "name": "firelog",
+  "version": "0.0.1",
+  "description": "Gerenciador de Log de Sistemas.",
   "author": "Milton Reis <wmr049@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -55,7 +55,11 @@
     "normalize.css": "6.0.0",
     "roboto-fontface": "0.7.0",
     "rxjs": "5.4.0",
-    "zone.js": "0.8.11"
+    "zone.js": "0.8.11",
+    "mydatepicker": "^1.9.7",
+    "ng2-validation": "^4.2.0",
+    "ngx-bootstrap": "^1.8.1",
+    "ng2-toastr": "^4.0.1"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

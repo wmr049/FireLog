@@ -1,6 +1,19 @@
 {
+  "register": {
+    "title": "Register in the firelog",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "repeat": "Repeat",
+    "sign_up": "Sign up",
+    "sign_up_from_app_text": "or sign up with a Click",
+    "share_on_facebook": "Share on Facebook",
+    "share_on_twitter": "Share on Twitter",
+    "share_on_google_plus": "Share on Google Plus",
+    "sign_in_link": "Do you already have a Docker Manager account?"
+  },
   "login": {
-    "title": "Sign in to ng2-admin",
+    "title": "Sign in to firelog",
     "signup_link": "New to ng2-admin? Sign up!",
     "email": "Email",
     "password": "Password",
@@ -19,6 +32,9 @@
     },
     "menu": {
       "dashboard": "Dashboard",
+      "main": "Main",
+      "repositories": "Repositories",
+      "images": "Images",
       "editors": "Editors",
       "ck_editor": "CKEditor",
       "components": "Components",

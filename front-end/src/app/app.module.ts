@@ -5,6 +5,13 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+// external componentes
+import { CustomFormsModule } from 'ng2-validation';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -16,6 +23,11 @@ import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
+
+// Services
+import { SeoService } from 'app/services/seo.services';
+import { AuthService } from "app/services/auth.service";
+import { UsuarioService } from "app/services/usuario.service";
 
 
 // Application wide providers
@@ -40,16 +52,22 @@ export type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    CustomFormsModule,
+    ToastModule.forRoot(),
     NgaModule.forRoot(),
     NgbModule.forRoot(),
     PagesModule,
     routing,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
+    SeoService,
+    AuthService,
+    UsuarioService,
     APP_PROVIDERS,
   ],
 })

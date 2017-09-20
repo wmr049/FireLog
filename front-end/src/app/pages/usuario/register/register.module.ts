@@ -1,10 +1,10 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgaModule } from '../../theme/nga.module';
-
+import { NgaModule } from '../../../theme/nga.module';
+import { AppTranslationModule } from 'app/app.translation.module';
 import { Register } from './register.component';
-import { routing }       from './register.routing';
+import { routing } from './register.routing';
 
 
 @NgModule({
@@ -13,10 +13,11 @@ import { routing }       from './register.routing';
     ReactiveFormsModule,
     FormsModule,
     NgaModule,
+    AppTranslationModule,
     routing
   ],
   declarations: [
     Register
-  ]
+  ],
 })
 export class RegisterModule {}

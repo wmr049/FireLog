@@ -1,0 +1,61 @@
+<div class="auth-main">
+
+  <div class="auth-block">
+    <h1 translate>{{'login.title'}}</h1>
+    <div class="form-group row"> 
+      <div class="offset-sm-2 col-sm-10">
+        <span><a routerLink="/register" class="auth-link" translate>{{'login.signup_link'}}</a></span>
+      </div>
+    </div>
+
+
+    <form novalidate [formGroup]="loginForm" (ngSubmit)="login()" class="form-horizontal">
+      <div class="alert alert-danger" *ngIf="errors.length > 0">
+        <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+        <ul>
+          <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+      </div>
+
+      <div class="form-group row" [ngClass]="{'has-error': displayMessage.email }">
+        <label class="col-md-2 control-label" translate>{{'login.email'}}</label>
+        <div class="col-md-10">
+          <input class="form-control" id="email" type="text" placeholder="{{'login.email' | translate}}" formControlName="email" />
+          <span class="text-danger" *ngIf="displayMessage.email">
+                <p [innerHTML]="displayMessage.email"></p>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row" [ngClass]="{'has-error': displayMessage.password }">
+        <label class="col-md-2 control-label" translate>{{'login.password'}}</label>
+        <div class="col-md-10">
+          <input class="form-control" id="password" type="password" placeholder="{{'login.password' | translate}}" formControlName="password"
+          />
+          <span class="text-danger" *ngIf="displayMessage.password">
+                <p [innerHTML]="displayMessage.password"></p>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+          <span><button class="btn btn-default btn-auth" id="login" type="submit" [disabled]='!loginForm.valid' translate>{{'login.sign_in'}}</button></span>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="auth-sep"><span><span translate>{{'login.sign_from_app_text'}}</span></span>
+    </div>
+
+    <div class="al-share-auth">
+      <ul class="al-share clearfix">
+        <li><i class="socicon socicon-facebook" title="{{'login.share_on_facebook' | translate}}"></i></li>
+        <li><i class="socicon socicon-twitter" title="{{'login.share_on_twitter' | translate}}"></i></li>
+        <li><i class="socicon socicon-google" title="{{'login.share_on_google_plus' | translate}}"></i></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
