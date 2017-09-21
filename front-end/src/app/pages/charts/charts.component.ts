@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'maps',
-  template: `<router-outlet></router-outlet>`,
+  selector: 'ngx-charts',
+  template: `
+    <router-outlet></router-outlet>
+  `,
 })
-export class Charts {
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
+export class ChartsComponent {
 }

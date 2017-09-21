@@ -6,6 +6,3 @@ module.exports = {
     sendgridKey: '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',
     containerConnectionString: 'DefaultEndpointsProtocol=https;AccountName=repofiles;AccountKey=TBbTT4dudyD5Gj/Z1OdblKM0ZTptanKwBiRMLiMGaYIYAZAJcAxPH0ZP9PJjd2CR6B8zEVLe0W23aaqq45X6sQ==;EndpointSuffix=core.windows.net'
 }
-
-
-

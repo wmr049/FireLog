@@ -1,11 +1,10 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'forms',
-  template: `<router-outlet></router-outlet>`
+  selector: 'ngx-form-elements',
+  template: `
+    <router-outlet></router-outlet>
+  `,
 })
-export class Forms {
-
-  constructor() {
-  }
+export class FormsComponent {
 }

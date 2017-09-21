@@ -12,9 +12,12 @@ const router = express.Router();
 mongoose.connect(config.connectionString)
 
 //Carregar os Models
+const ApiKey = require('./models/apikey');
 const Log = require('./models/log');
+const Organization = require('./models/organization');
+const System = require('./models/system');
+const UserOrganization = require('./models/user_organization');
 const User = require('./models/user');
-
 
 //Carrega as Rotas
 const indexRoute = require('./routes/index-route');

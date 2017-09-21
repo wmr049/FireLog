@@ -73,6 +73,20 @@ const schema = new Schema({
         type: String,
         trim: true
     },
+    system: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'System'
+    },
+    active: {
+        type: Boolean,
+        required: [true, 'O Status é obrigatório'],
+        default: true
+    },
+    createDate: {
+        type: Date,
+        required: true,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model('Log', schema);

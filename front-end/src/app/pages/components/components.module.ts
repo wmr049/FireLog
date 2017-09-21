@@ -1,24 +1,20 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NgaModule } from '../../theme/nga.module';
-import { TreeModule } from 'ng2-tree';
+import { NgModule } from '@angular/core';
 
-import { routing }       from './components.routing';
-import { Components } from './components.component';
-import { TreeView } from './components/treeView/treeView.component';
+import { TreeModule } from 'ng2-tree';
+import { ToasterModule } from 'angular2-toaster';
+
+import { ThemeModule } from '../../@theme/theme.module';
+import { ComponentsRoutingModule, routedComponents } from './components-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    NgaModule,
+    ThemeModule,
+    ComponentsRoutingModule,
     TreeModule,
-    routing
+    ToasterModule,
   ],
   declarations: [
-    Components,
-    TreeView,
-  ]
+    ...routedComponents,
+  ],
 })
-export class ComponentsModule {}
+export class ComponentsModule { }
