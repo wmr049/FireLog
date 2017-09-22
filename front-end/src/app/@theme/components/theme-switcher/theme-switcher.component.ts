@@ -7,14 +7,14 @@ import { AnalyticsService } from '../../../@core/utils/analytics.service';
   selector: 'ngx-theme-switcher',
   styleUrls: ['./theme-switcher.component.scss'],
   template: `
-    <label class="theme-switch">
+    <!--label class="theme-switch">
       <span class="light">Light</span>
       <div class="switch">
         <input type="checkbox" [checked]="currentBoolTheme()" (change)="toggleTheme(theme.checked)" #theme>
         <span class="slider"></span>
       </div>
       <span class="cosmic">Cosmic</span>
-    </label>
+    </label-->
   `,
 })
 export class ThemeSwitcherComponent implements OnInit {
@@ -39,7 +39,7 @@ export class ThemeSwitcherComponent implements OnInit {
   }
 
   private themeToBool(theme: NbJSThemeOptions) {
-    return theme.name === 'cosmic';
+    return theme.name === 'light';
   }
 
   private boolToTheme(theme: boolean) {
