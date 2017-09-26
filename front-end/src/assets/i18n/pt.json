@@ -34,7 +34,11 @@
       "option1": "Opção 1"
     },
     "menu": {
-      "dashboard": "Painel de Controle",
+      "profile":"Perfil",
+      "manager":"Gerenciador",
+      "manager-organization":"Organização",
+      "manager-system":"Sistemas",
+      "dashboard": "DashBoard",
       "main": "Principal",
       "repositories": "Repositórios",
       "images": "Imagens",

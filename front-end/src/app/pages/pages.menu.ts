@@ -3,15 +3,27 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
-        path: 'main',  // path for our page
+        path: 'perfil',  // path for our page
         data: { // custom menu declaration
           menu: {
-            title: 'general.menu.main', // menu title
-            icon: 'ion-android-home', // menu icon
+            title: 'general.menu.profile', // menu title
+            icon: 'ion-android-contact', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: true,
+            order: 0,
+          },
+        },
+      },
+      {
+        path: 'dashboard',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'general.menu.dashboard', // menu title
+            icon: 'ion-ios-pie', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
-            order: 0,
+            order: 1,
           },
         },
       },
@@ -19,11 +31,11 @@ export const PAGES_MENU = [
         path: 'repositories',
         data: {
           menu: {
-            title: 'general.menu.repositories',
-            icon: 'ion-ios-pie-outline',
+            title: 'general.menu.manager',
+            icon: 'ion-wrench',
             selected: false,
-            expanded: false,
-            order: 0,
+            expanded: true,
+            order: 2,
           },
         },
         children: [
@@ -31,7 +43,15 @@ export const PAGES_MENU = [
             path: 'list-repositories',
             data: {
               menu: {
-                title: 'general.menu.images',
+                title: 'general.menu.manager-organization',
+              },
+            },
+          },
+          {
+            path: 'editors',
+            data: {
+              menu: {
+                title: 'general.menu.manager-system',
               },
             },
           },
