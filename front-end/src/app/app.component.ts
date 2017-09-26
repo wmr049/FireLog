@@ -1,21 +1,54 @@
-/**
- * @license
- * Copyright exxatech. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+import { Component, ViewContainerRef } from '@angular/core';
+import * as $ from 'jquery';
+
+import { GlobalState } from './global.state';
+import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
+import { BaThemeConfig } from './theme/theme.config';
+import { layoutPaths } from './theme/theme.constants';
+
+/*
+ * App Component
+ * Top Level Component
  */
-import { Component, OnInit } from '@angular/core';
-import { AnalyticsService } from './@core/utils/analytics.service';
-
 @Component({
-  selector: 'ngx-app',
-  template: '<router-outlet></router-outlet>',
+  selector: 'app',
+  styleUrls: ['./app.component.scss'],
+  template: `
+    <main [class.menu-collapsed]="isMenuCollapsed" baThemeRun>
+      <div class="additional-bg"></div>
+      <router-outlet></router-outlet>
+    </main>
+  `,
 })
-export class AppComponent implements OnInit {
+export class App {
 
-  constructor(private analytics: AnalyticsService) {
+  isMenuCollapsed: boolean = false;
+
+  constructor(private _state: GlobalState,
+              private _imageLoader: BaImageLoaderService,
+              private _spinner: BaThemeSpinner,
+              private viewContainerRef: ViewContainerRef,
+              private themeConfig: BaThemeConfig) {
+
+    themeConfig.config();
+
+    this._loadImages();
+
+    this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+      this.isMenuCollapsed = isCollapsed;
+    });
   }
 
-  ngOnInit(): void {
-    this.analytics.trackPageViews();
+  public ngAfterViewInit(): void {
+    // hide spinner once all loaders are completed
+    BaThemePreloader.load().then((values) => {
+      this._spinner.hide();
+    });
   }
+
+  private _loadImages(): void {
+    // register some loaders
+    BaThemePreloader.registerLoader(this._imageLoader.load('assets/img/sky-bg.jpg'));
+  }
+
 }

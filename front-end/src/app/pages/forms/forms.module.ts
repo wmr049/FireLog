@@ -1,15 +1,54 @@
-import { NgModule } from '@angular/core';
+import { NgModule }      from '@angular/core';
+import { CommonModule }  from '@angular/common';
+import { FormsModule as AngularFormsModule } from '@angular/forms';
+import { AppTranslationModule } from '../../app.translation.module';
+import { NgaModule } from '../../theme/nga.module';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { ThemeModule } from '../../@theme/theme.module';
-import { FormsRoutingModule, routedComponents } from './forms-routing.module';
+import { routing }       from './forms.routing';
+
+import { Forms } from './forms.component';
+import { Inputs } from './components/inputs';
+import { Layouts } from './components/layouts';
+
+import { StandardInputs } from './components/inputs/components/standardInputs';
+import { ValidationInputs } from './components/inputs/components/validationInputs';
+import { GroupInputs } from './components/inputs/components/groupInputs';
+import { CheckboxInputs } from './components/inputs/components/checkboxInputs';
+import { Rating } from './components/inputs/components/ratinginputs';
+import { SelectInputs } from './components/inputs/components/selectInputs';
+
+import { InlineForm } from './components/layouts/components/inlineForm';
+import { BlockForm } from './components/layouts/components/blockForm';
+import { HorizontalForm } from './components/layouts/components/horizontalForm';
+import { BasicForm } from './components/layouts/components/basicForm';
+import { WithoutLabelsForm } from './components/layouts/components/withoutLabelsForm';
 
 @NgModule({
   imports: [
-    ThemeModule,
-    FormsRoutingModule,
+    CommonModule,
+    AngularFormsModule,
+    AppTranslationModule,
+    NgaModule,
+    NgbRatingModule,
+    routing,
   ],
   declarations: [
-    ...routedComponents,
+    Layouts,
+    Inputs,
+    Forms,
+    StandardInputs,
+    ValidationInputs,
+    GroupInputs,
+    CheckboxInputs,
+    Rating,
+    SelectInputs,
+    InlineForm,
+    BlockForm,
+    HorizontalForm,
+    BasicForm,
+    WithoutLabelsForm,
   ],
 })
-export class FormsModule { }
+export class FormsModule {
+}

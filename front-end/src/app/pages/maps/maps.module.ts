@@ -1,22 +1,35 @@
-import { NgModule } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
-import { LeafletModule } from '@asymmetrik/angular2-leaflet';
-import { AngularEchartsModule } from 'ngx-echarts';
+import { NgModule }      from '@angular/core';
+import { CommonModule }  from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgaModule } from '../../theme/nga.module';
 
-import { ThemeModule } from '../../@theme/theme.module';
-import { MapsRoutingModule, routedComponents } from './maps-routing.module';
+import { routing }       from './maps.routing';
+import { Maps } from './maps.component';
+import { BubbleMaps } from './components/bubbleMaps/bubbleMaps.component';
+import { GoogleMaps } from './components/googleMaps/googleMaps.component';
+import { LeafletMaps } from './components/leafletMaps/leafletMaps.component';
+import { LineMaps } from './components/lineMaps/lineMaps.component';
+import { BubbleMapsService } from './components/bubbleMaps/bubbleMaps.service';
+import { LineMapsService } from './components/lineMaps/lineMaps.service';
+
 
 @NgModule({
   imports: [
-    ThemeModule,
-    AgmCoreModule.forRoot(),
-    LeafletModule.forRoot(),
-    MapsRoutingModule,
-    AngularEchartsModule,
+    CommonModule,
+    FormsModule,
+    NgaModule,
+    routing
   ],
-  exports: [],
   declarations: [
-    ...routedComponents,
+    Maps,
+    BubbleMaps,
+    GoogleMaps,
+    LeafletMaps,
+    LineMaps
   ],
+  providers: [
+    BubbleMapsService,
+    LineMapsService
+  ]
 })
-export class MapsModule { }
+export class MapsModule {}

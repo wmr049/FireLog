@@ -1,17 +1,41 @@
 import { Component } from '@angular/core';
+import { Routes } from '@angular/router';
 
-import { MENU_ITEMS } from './pages-menu';
+import { BaMenuService } from '../theme';
+import { PAGES_MENU } from './pages.menu';
 
 @Component({
-  selector: 'ngx-pages',
+  selector: 'pages',
   template: `
-    <ngx-sample-layout>
-      <nb-menu [items]="menu"></nb-menu>
-      <router-outlet></router-outlet>
-    </ngx-sample-layout>
-  `,
+    <ba-sidebar></ba-sidebar>
+    <ba-page-top></ba-page-top>
+    <div class="al-main">
+      <div class="al-content">
+        <ba-content-top></ba-content-top>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <footer class="al-footer clearfix">
+      <div class="al-footer-right" translate>{{'general.created_with'}} <i class="ion-heart"></i></div>
+      <div class="al-footer-main clearfix">
+        <div class="al-copy">&copy; <a href="http://exxatech.com.br" translate>{{'general.exxatech'}}</a> 2017</div>
+        <!--<ul class="al-share clearfix">
+          <li><i class="socicon socicon-facebook"></i></li>
+          <li><i class="socicon socicon-twitter"></i></li>
+          <li><i class="socicon socicon-google"></i></li>
+          <li><i class="socicon socicon-github"></i></li>
+        </ul>-->
+      </div>
+    </footer>
+    <ba-back-top position="200"></ba-back-top>
+    `,
 })
-export class PagesComponent {
+export class Pages {
 
-  menu = MENU_ITEMS;
+  constructor(private _menuService: BaMenuService) {
+  }
+
+  ngOnInit() {
+    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+  }
 }

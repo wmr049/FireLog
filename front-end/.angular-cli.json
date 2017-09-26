@@ -9,13 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
-        "favicon.png",
-        {
-          "glob": "**/*",
-          "input": "../node_modules/leaflet/dist/images",
-          "output": "./assets/img/markers"
-        }
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -23,25 +17,30 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/typeface-exo/index.css",
-        "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
-        "../node_modules/ionicons/scss/ionicons.scss",
+        "../node_modules/roboto-fontface/css/roboto/sass/roboto-fontface.scss",
+        "../node_modules/normalize.css/normalize.css",
         "../node_modules/font-awesome/scss/font-awesome.scss",
-        "../node_modules/nebular-icons/scss/nebular-icons.scss",
-        "../node_modules/socicon/css/socicon.css",
-        "./app/@theme/styles/styles.scss"
+        "../node_modules/ionicons/scss/ionicons.scss",
+        "../node_modules/bootstrap/scss/bootstrap.scss",
+        "../node_modules/leaflet/dist/leaflet.css",
+        "../node_modules/chartist/dist/chartist.css",
+        "../node_modules/fullcalendar/dist/fullcalendar.css",
+        "../node_modules/handsontable/dist/handsontable.full.css",
+        "../node_modules/ng2-slim-loading-bar/style.css",
+        "app/theme/theme.scss",
+        "styles.scss",
+        "toastr.css"
       ],
       "scripts": [
-        "../node_modules/tinymce/tinymce.min.js",
-        "../node_modules/tinymce/themes/modern/theme.min.js",
-        "../node_modules/tinymce/plugins/link/plugin.min.js",
-        "../node_modules/tinymce/plugins/paste/plugin.min.js",
-        "../node_modules/tinymce/plugins/table/plugin.min.js",
-        "./assets/vendors/echarts.min.js",
-        "./assets/vendors/echarts.world.min.js",
-        "../node_modules/chart.js/dist/Chart.min.js"
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/easy-pie-chart/dist/jquery.easypiechart.js",
+        "../node_modules/jquery-slimscroll/jquery.slimscroll.js",
+        "../node_modules/tether/dist/js/tether.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/handsontable/dist/handsontable.full.js",
+        "../node_modules/chroma-js/chroma.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -57,7 +56,6 @@
   },
   "lint": [
     {
-      "files": "src/**/*.ts",
       "project": "src/tsconfig.app.json"
     },
     {
@@ -74,6 +72,10 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "serve": {
+      "port": 1337
+    },
+    "component": {
+    }
   }
 }

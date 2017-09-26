@@ -1,23 +1,15 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { PagesComponent } from './pages.component';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { PagesRoutingModule } from './pages-routing.module';
-import { ThemeModule } from '../@theme/theme.module';
+import { routing } from './pages.routing';
+import { NgaModule } from '../theme/nga.module';
+import { AppTranslationModule } from '../app.translation.module';
 
-const PAGES_COMPONENTS = [
-  PagesComponent,
-];
+import { Pages } from './pages.component';
 
 @NgModule({
-  imports: [
-    PagesRoutingModule,
-    ThemeModule,
-    DashboardModule,
-  ],
-  declarations: [
-    ...PAGES_COMPONENTS,
-  ],
+  imports: [CommonModule, AppTranslationModule, NgaModule, routing],
+  declarations: [Pages],
 })
 export class PagesModule {
 }
