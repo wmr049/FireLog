@@ -1,6 +1,12 @@
 # Front Gerenciador de Log
 Sistema para gerenciamento de Log de Sistemas
 
+Tecnologias envolvida
+* Angular 4
+* TypeScript
+* Bootstrap 3
+* Template nga-admin from https://github.com/akveo/ngx-admin/tree/ng2-admin
+
 Dependencias necessarias:
 * node 8.4.0
 * python 2.7
