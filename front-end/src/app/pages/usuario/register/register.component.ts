@@ -14,7 +14,7 @@ import { UsuarioService } from 'app/services/usuario.service';
 
 
 @Component({
-  selector: 'register',
+  selector: 'nga-register',
   templateUrl: './register.html',
   styleUrls: ['./register.scss'],
 })
@@ -120,7 +120,7 @@ export class Register implements OnInit, AfterViewInit {
       .then((toast: Toast) => {
         setTimeout(() => {
           this.toastr.dismissToast(toast);
-          this.router.navigate(['/pages/main']);
+          this.router.navigate(['/pages/dashboard']);
         }, 3500);
       });
   }

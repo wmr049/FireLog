@@ -28,7 +28,7 @@ export const PAGES_MENU = [
         },
       },
       {
-        path: 'repositories',
+        path: 'manager',
         data: {
           menu: {
             title: 'general.menu.manager',
@@ -40,7 +40,7 @@ export const PAGES_MENU = [
         },
         children: [
           {
-            path: 'list-repositories',
+            path: 'manager-organization',
             data: {
               menu: {
                 title: 'general.menu.manager-organization',
@@ -48,7 +48,7 @@ export const PAGES_MENU = [
             },
           },
           {
-            path: 'editors',
+            path: 'manager-system',
             data: {
               menu: {
                 title: 'general.menu.manager-system',

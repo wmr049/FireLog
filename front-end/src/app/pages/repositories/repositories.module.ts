@@ -5,11 +5,11 @@ import { FormsModule } from '@angular/forms';
 
 import { routing } from './repositories.routing';
 
-//components
+// components
 import { ListRepositoriesComponent } from 'app/pages/repositories/list-repositories/list-repositories.component';
 import { RepositoriesComponent } from 'app/pages/repositories';
 
-//services
+// services
 import { DockerService } from 'app/pages/repositories/services/docker.service';
 
 @NgModule({

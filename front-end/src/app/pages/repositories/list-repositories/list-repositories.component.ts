@@ -19,7 +19,7 @@ export class ListRepositoriesComponent implements OnInit {
               service: DockerService) {
 
     const seoModel: SeoModel = <SeoModel>{
-      title: 'Repositrio de Imagens',
+      title: 'Gerenciador de Logs',
       description: 'Lista de todos os repositórios privados',
       robots: 'Index, Follow',
       keywords: 'repositório,lista,container,imagens',

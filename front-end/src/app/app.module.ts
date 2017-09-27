@@ -26,8 +26,8 @@ import { PagesModule } from './pages/pages.module';
 
 // Services
 import { SeoService } from 'app/services/seo.services';
-import { AuthService } from "app/services/auth.service";
-import { UsuarioService } from "app/services/usuario.service";
+import { AuthService } from 'app/services/auth.service';
+import { UsuarioService } from 'app/services/usuario.service';
 
 
 // Application wide providers

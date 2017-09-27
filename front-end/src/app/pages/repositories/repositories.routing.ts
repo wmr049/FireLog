@@ -9,8 +9,8 @@ const routes: Routes = [
     component: RepositoriesComponent,
     children: [
       { path: 'list-repositories', component: ListRepositoriesComponent },
-    ]
-    },
+    ],
+  },
 ];
 
 export const routing = RouterModule.forChild(routes);

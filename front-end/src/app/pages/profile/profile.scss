@@ -4,6 +4,8 @@
         margin-top: -573px;
       }
     }
+
+    
   }
   
   @media screen and (max-width: 1620px) {
@@ -11,7 +13,17 @@
       height: 824px;
     }
   }
-  
+   
+  th {
+    text-align: center; 
+    vertical-align: middle;
+  }
+
+  td {
+    text-align: center; 
+    vertical-align: middle;
+  }
+
   .user-stats-card {
     .card-title {
       padding: 0 0 15px;

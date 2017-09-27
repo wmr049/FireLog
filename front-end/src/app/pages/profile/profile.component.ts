@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProfileService } from 'app/pages/profile/profile.service';
 
 @Component({
   selector: 'nga-profile',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './profile.html',
 })
 export class ProfileComponent {
-  constructor() {}
+
+  emailParametersUser: any[];
+
+  constructor(private _profileService: ProfileService) {
+    this.emailParametersUser = _profileService.emailParametersUser;
+  }
 }

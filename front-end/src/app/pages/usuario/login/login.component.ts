@@ -13,7 +13,7 @@ import { Usuario } from 'app/pages/usuario/models/usuario';
 import { UsuarioService } from 'app/services/usuario.service';
 
 @Component({
-  selector: 'login',
+  selector: 'nga-login',
   templateUrl: './login.html',
   styleUrls: ['./login.scss'],
 })
@@ -99,7 +99,7 @@ export class Login implements OnInit, AfterViewInit {
       .then((toast: Toast) => {
         setTimeout(() => {
           this.toastr.dismissToast(toast);
-          this.router.navigate(['/pages/main']);
+          this.router.navigate(['/pages/dashboard']);
         }, 3500);
       });
   }
