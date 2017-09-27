@@ -1,6 +1,6 @@
 {
   "register": {
-    "title": "Register in the Docker Manager",
+    "title": "Register in the FireLog",
     "name": "Name",
     "email": "Email",
     "password": "Password",
@@ -10,7 +10,7 @@
     "share_on_facebook": "Share on Facebook",
     "share_on_twitter": "Share on Twitter",
     "share_on_google_plus": "Share on Google Plus",
-    "sign_in_link": "Do you already have a Docker Manager account?"
+    "sign_in_link": "Do you already have a FireLog account?"
   },
   "login": {
     "title": "Sign in to ng2-admin",

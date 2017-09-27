@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'nga-profile',
-  styleUrls: ['./main.scss'],
-  templateUrl: './main.html',
+  styleUrls: ['./profile.scss'],
+  templateUrl: './profile.html',
 })
 export class ProfileComponent {
   constructor() {}

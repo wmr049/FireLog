@@ -28,7 +28,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
       { path: 'main', loadChildren: './main/main.module#MainModule' },
-      { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilModule' },
+      { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
       { path: 'repositories', loadChildren: './repositories/repositories.module#RepositoriesModule' },
       { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
       { path: 'components', loadChildren: './components/components.module#ComponentsModule' },

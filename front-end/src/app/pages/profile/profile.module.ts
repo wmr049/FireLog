@@ -15,4 +15,4 @@ import { routing } from './profile.routing';
     ProfileComponent,
   ],
 })
-export class MainModule {}
+export class ProfileModule {}

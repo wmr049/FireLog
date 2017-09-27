@@ -1,7 +1,7 @@
 {
 
   "register": {
-    "title": "Registre no Gerenciador Docker",
+    "title": "Registre no FireLog",
     "name": "Nome",
     "email": "Email",
     "password": "Senha",
@@ -11,13 +11,13 @@
     "share_on_facebook": "Compartilhe no Facebook",
     "share_on_twitter": "Compartilhe no Twitter",
     "share_on_google_plus": "Compartilhe no Google Plus",
-    "sign_in_link": "Ja tem uma conta Gerenciador de Docker? Entre!",
+    "sign_in_link": "Ja tem uma conta FireLog? Entre!",
     "error":"Opa! Alguma coisa não deu certo :) !!",
     "cpf": "CPF"
   },
   "login": {
-    "title": "Entre no Gerenciado de Docker",
-    "signup_link": "Novo no Gerenciador de Docker? Inscreva-se!",
+    "title": "Entre no FireLog",
+    "signup_link": "Novo no FireLog? Inscreva-se!",
     "email": "Email",
     "password": "Senha",
     "sign_in": "Entrar",

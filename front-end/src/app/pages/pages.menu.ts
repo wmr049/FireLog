@@ -3,7 +3,7 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
-        path: 'perfil',  // path for our page
+        path: 'profile',  // path for our page
         data: { // custom menu declaration
           menu: {
             title: 'general.menu.profile', // menu title
