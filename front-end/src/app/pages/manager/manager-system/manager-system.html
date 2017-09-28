@@ -1,0 +1,84 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <md-tab-group>
+
+          <md-tab label="Visão Geral">
+
+            <div class="container">
+              <div class="tab-content">
+                <div class="tab-pane active" id="overviewTab">
+                  <div class="refresher">
+                    <div>
+                      <div class="sumbox-container">
+                      </div>
+                      <div class="row">
+                      </div>
+                      <div class="s30">
+                      </div>
+                      <div class="row">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </md-tab>
+
+          <md-tab label="Procurar">
+
+            <div class="input-group list-search">
+              <span class="input-group-addon"><span class="ion-android-search"></span></span>
+              <input type="search" placeholder="Procurar usuario por email ou por nome" class="form-control">
+              <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Adicionar</button>
+            </div>
+
+            <div class="horizontal-scroll">
+              <table class="table table-hover table-users table-responsive">
+                <tbody>
+                  <tr *ngFor="let item of emailParametersUser">
+                    <td class="header">{{ item.id }}</td>
+                    <td class="header">{{ item.log }}</td>
+                    <td>
+                      <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul class="btn-list clearfix">
+              <li>
+                <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Usuario</button>
+              </li>
+            </ul>
+          </md-tab>
+
+
+
+          <md-tab label="Ações">
+
+            <h4>Habilitar/Desabilitar</h4>
+            <p>Habilite ou desabilite o log para este Sistema.</p>
+            <button type="button" class="btn btn-danger"><i class="ion-android-download"></i>Desabilitar</button>
+            <hr>
+
+            <h4>Limpar log</h4>
+            <p>Pegue um novo inicio. Todos os dados serão excluidos.</p>
+            <button type="button" class="btn btn-danger"><i class="ion-android-download"></i>Limpar Log</button>
+            <hr>
+
+            <h4>Excluir log</h4>
+            <p>Se você não precisa mais dos logs deste sistema, pode excluí-lo juntamente com todos os dados.</p>
+            <button type="button" class="btn btn-danger"><i class="ion-android-download"></i>Excluir log</button>
+            <hr>
+
+          </md-tab>
+
+        </md-tab-group>
+
+      </form>
+    </div>
+  </div>
+</div>

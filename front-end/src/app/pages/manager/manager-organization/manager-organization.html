@@ -6,42 +6,57 @@
           <md-tab label="Perfil">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="name">Nome</label>
-                <input type="text" class="form-control" id="name" placeholder="Nome do usuario">
+                <label for="fantasyname">Nome</label>
+                <input type="text" class="form-control" id="fantasyname" placeholder="Nome da Organização">
               </div>
+
               <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="text" class="form-control" id="email" placeholder="Email">
+                <label for="realname">Razão Social</label>
+                <input type="text" class="form-control" id="realname" placeholder="Razão Social">
               </div>
+
+              <div class="form-group">
+                <label for="address">Endereço</label>
+                <input type="text" class="form-control" id="address" placeholder="Endereço">
+              </div>
+
+              <div class="form-group">
+                <label for="zipcode">CEP</label>
+                <input type="text" class="form-control" id="zipcode" placeholder="CEP">
+              </div>
+
+              <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="text" class="form-control" id="city" placeholder="Cidade">
+              </div>
+
+              <div class="form-group">
+                <label for="country">Pais</label>
+                <input type="text" class="form-control" id="country" placeholder="Pais">
+              </div>
+
               <ul class="btn-list clearfix">
                 <li>
-                  <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Perfil</button>
+                  <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Organização</button>
                 </li>
               </ul>
             </div>
           </md-tab>
 
-          <md-tab label="Users">
+          <md-tab label="Usuario">
+
+            <div class="input-group list-search">
+              <span class="input-group-addon"><span class="ion-android-search"></span></span>
+              <input type="search" placeholder="Procurar usuario por email ou por nome" class="form-control">
+              <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Adicionar</button>
+            </div>
 
             <div class="horizontal-scroll">
-              <table class="table table-condensed">
-                <thead>
-                  <tr>
-                    <th class="table-id">#</th>
-                    <th>Log</th>
-                    <th>Sumário diário</th>
-                    <th>Novos Erros</th>
-                    <th>Aumento do Impacto</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
+              <table class="table table-hover table-users table-responsive">
                 <tbody>
                   <tr *ngFor="let item of emailParametersUser">
-                    <td class="table-id">{{ item.id }}</td>
-                    <td>{{ item.log }}</td>
-                    <td><input type="checkbox" name="summarydaily" [checked]="item.summarydaily"></td>
-                    <td><input type="checkbox" name="newerrors" [checked]="item.newerrors"></td>
-                    <td><input type="checkbox" name="impactincreased" [checked]="item.impactincreased"></td>
+                    <td class="header">{{ item.id }}</td>
+                    <td class="header">{{ item.log }}</td>
                     <td>
                       <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
                     </td>
@@ -51,32 +66,28 @@
             </div>
             <ul class="btn-list clearfix">
               <li>
-                <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Email</button>
+                <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Usuario</button>
               </li>
             </ul>
           </md-tab>
 
           <md-tab label="API Keys">
 
+            <h4>Criar nova API Key</h4>
+
+            <div class="input-group list-search">
+              <span class="input-group-addon"><span class="ion-android-search"></span></span>
+              <input type="search" placeholder="De um nome a API Key" class="form-control">
+              <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Criar</button>
+            </div>
+
             <div class="horizontal-scroll">
-              <table class="table table-condensed">
-                <thead>
-                  <tr>
-                    <th class="table-id">#</th>
-                    <th>Log</th>
-                    <th>Sumário diário</th>
-                    <th>Novos Erros</th>
-                    <th>Aumento do Impacto</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
+
+              <table class="table table-hover table-users table-responsive">
                 <tbody>
                   <tr *ngFor="let item of emailParametersUser">
-                    <td class="table-id">{{ item.id }}</td>
-                    <td>{{ item.log }}</td>
-                    <td><input type="checkbox" name="summarydaily" [checked]="item.summarydaily"></td>
-                    <td><input type="checkbox" name="newerrors" [checked]="item.newerrors"></td>
-                    <td><input type="checkbox" name="impactincreased" [checked]="item.impactincreased"></td>
+                    <td class="header">{{ item.id }}</td>
+                    <td class="header">{{ item.log }}</td>
                     <td>
                       <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
                     </td>
@@ -84,29 +95,16 @@
                 </tbody>
               </table>
             </div>
-            <ul class="btn-list clearfix">
-              <li>
-                <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Email</button>
-              </li>
-            </ul>
+
           </md-tab>
 
           <md-tab label="Ações">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="name">Nome</label>
-                <input type="text" class="form-control" id="name" placeholder="Nome do usuario">
-              </div>
-              <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="text" class="form-control" id="email" placeholder="Email">
-              </div>
-              <ul class="btn-list clearfix">
-                <li>
-                  <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Perfil</button>
-                </li>
-              </ul>
-            </div>
+
+            <h4>Excluir Organização</h4>
+            <p>Caso não necessite mais da Organização, voce pode exclui-la.</p>
+            <button type="button" class="btn btn-danger"><i class="ion-android-download"></i>Excluir Organização</button>
+            <hr>
+
           </md-tab>
 
         </md-tab-group>
