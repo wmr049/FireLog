@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material';
+import { ChartsModule } from 'ng2-charts';
 
 import { routing } from './manager.routing';
 
@@ -13,6 +14,7 @@ import { ManagerSystemComponent } from 'app/pages/manager/manager-system/manager
 // services
 import { ManagerOrganizationService } from 'app/pages/manager/services/manager-organization.service';
 import { ManagerSystemService } from 'app/pages/manager/services/manager-system.service';
+import { ManagerSystemChartService } from 'app/pages/manager/services/manager-system-chart.service';
 
 @NgModule({
     imports: [
@@ -20,15 +22,18 @@ import { ManagerSystemService } from 'app/pages/manager/services/manager-system.
         FormsModule,
         routing,
         MatTabsModule,
+        ChartsModule,
     ],
     declarations: [
         ManagerComponent,
         ManagerOrganizationComponent,
-        ManagerSystemComponent
+        ManagerSystemComponent,
+
     ],
     providers: [
         ManagerOrganizationService,
         ManagerSystemService,
+        ManagerSystemChartService,
     ],
 })
 

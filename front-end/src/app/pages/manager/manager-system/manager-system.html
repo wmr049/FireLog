@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <form>
-        <md-tab-group>
+        <md-tab-group class="tab-group">
 
           <md-tab label="Visão Geral">
 
@@ -12,12 +12,117 @@
                   <div class="refresher">
                     <div>
                       <div class="sumbox-container">
+                        <div class="sumbox">
+                          <label for="">Total</label>
+                          <a href="#" class="sumboxvalue">1</a>
+                        </div>
+                        <div class="sumbox critical">
+                          <label for="">Criticos</label>
+                          <a href="#" class="sumboxvalue">1</a>
+                        </div>
+                        <div class="sumbox">
+                          <label for="">Incidentes</label>
+                          <a href="#" class="sumboxvalue">0</a>
+                        </div>
+                        <div class="sumbox">
+                          <label for="">Unicos</label>
+                          <a href="#" class="sumboxvalue">1</a>
+                        </div>
+                        <div class="sumbox">
+                          <label for="">Usuarios</label>
+                          <a href="#" class="sumboxvalue">1</a>
+                        </div>
+                        <div class="sumbox">
+                          <label for="">Navegadores afetados (<span>1</span>)</label>
+                          <div class="affectedbrowsers">
+                            <a href="#" title="Chrome">
+                              <span class="fa fa-chrome overview-browsericon" ></span>
+                            </a>
+                            <a href="#" title="Firefox">
+                                <span class="fa fa-firefox overview-browsericon text-muted" ></span>
+                            </a>
+                            <a href="#" title="Internet Explorer">
+                                <span class="fa fa-internet-explorer overview-browsericon text-muted" ></span>
+                            </a>
+                            <a href="#" title="Edge">
+                                <span class="fa fa-edge overview-browsericon text-muted" ></span>
+                            </a>
+                            <a href="#" title="Opera">
+                                <span class="fa fa-opera overview-browsericon text-muted" ></span>
+                            </a>
+                            <a href="#" title="Safari">
+                                <span class="fa fa-safari overview-browsericon text-muted" ></span>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="sumbox">
+                          <label for="">
+                              <label for="">Usuarios afetados (<span>1</span>)</label>
+                          </label>
+                          <div class="affectedusers">
+                            <div>
+                              <span class="count">1</span>
+                              <img src="">
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div class="row">
+                        <div class="col-lg-12">
+                          <div class="overviewChartContainer">
+                            <iframe class="chartjs-hidden-iframe" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"
+                              tabindex="-1"></iframe>
+
+                            <div style="display: block">
+                              <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+                                [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                            </div>
+
+                          </div>
+                        </div>
                       </div>
                       <div class="s30">
                       </div>
+
                       <div class="row">
+                        <div class="col-sm-12 col-lg-4">
+                          <label for="">RECENTE</label>
+                          <div id="recent">
+                            <div class="firelog-message firelog-danger">
+                              <a href="#">
+                                <span>Esta é uma exceção de teste que pode ser ignorada com segurança.</span>
+                                <span class="text-muted small">7 dias atras</span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                          <label for="">FRENQUENTES</label>
+                          <div id="frequent">
+                            <div class="firelog-message">
+
+                              <span class="label firelog-danger">1</span>
+                              <strong>x</strong>
+                              <a href="#">
+                                <span>Esta é uma exceção de teste que pode ser ignorada com segurança.</span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                          <label for="">URLs AFETADAS</label>
+                          <div id="frequent">
+                            <div class="firelog-message">
+
+                              <span class="label firelog-danger">1</span>
+                              <strong>x</strong>
+                              <a href="#">
+                                  <span>/fazer/algumacoisa</span>
+                                </a>
+                            </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>

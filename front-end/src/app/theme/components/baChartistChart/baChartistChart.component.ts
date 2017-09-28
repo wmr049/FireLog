@@ -4,7 +4,7 @@ import {
     Input,
     Output,
     ElementRef,
-    EventEmitter
+    EventEmitter,
 } from '@angular/core';
 
 import * as Chartist from 'chartist';
@@ -16,11 +16,11 @@ import * as Chartist from 'chartist';
 })
 export class BaChartistChart {
 
-  @Input() baChartistChartType:string;
-  @Input() baChartistChartData:Object;
-  @Input() baChartistChartOptions:Object;
-  @Input() baChartistChartResponsive:Object;
-  @Input() baChartistChartClass:string;
+  @Input() baChartistChartType: string;
+  @Input() baChartistChartData: Object;
+  @Input() baChartistChartOptions: Object;
+  @Input() baChartistChartResponsive: Object;
+  @Input() baChartistChartClass: string;
   @Output() onChartReady = new EventEmitter<any>();
 
   @ViewChild('baChartistChart') public _selector: ElementRef;
@@ -38,7 +38,7 @@ export class BaChartistChart {
     }
   }
 
-  ngOnDestroy():void {
+  ngOnDestroy(): void {
     if (this.chart) {
       this.chart.detach();
     }

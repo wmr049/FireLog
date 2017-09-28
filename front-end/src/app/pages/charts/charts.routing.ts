@@ -10,8 +10,8 @@ const routes: Routes = [
     component: Charts,
     children: [
       { path: 'chartist-js', component: ChartistJs }
-    ]
-  }
+    ],
+  },
 ];
 
 export const routing = RouterModule.forChild(routes);
