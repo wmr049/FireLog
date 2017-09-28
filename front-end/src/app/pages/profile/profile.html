@@ -1,62 +1,58 @@
-<div class="widgets">    
-      <div class="row">
-        <div class="col-md-12">
-          <form>
-              <md-tab-group>
-                  <md-tab label="Perfil">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" class="form-control" id="name" placeholder="Nome do usuario">
-                          </div>
-                          <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="text" class="form-control" id="email" placeholder="Email">
-                          </div>            
-                          <ul class="btn-list clearfix">
-                            <li>
-                              <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Perfil</button>
-                            </li>
-                          </ul>      
-                    </div>                      
-                  </md-tab>
-                  <md-tab label="Email">
-                    
-                      <div class="horizontal-scroll">
-                          <table class="table table-condensed">
-                            <thead>
-                            <tr>
-                              <th class="table-id">#</th>
-                              <th>Log</th>
-                              <th>Sumário diário</th>
-                              <th>Novos Erros</th>
-                              <th>Aumento do Impacto</th>
-                              <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let item of emailParametersUser">
-                              <td class="table-id">{{ item.id }}</td>
-                              <td>{{ item.log }}</td>
-                              <td><input type="checkbox" name="summarydaily" [checked]="item.summarydaily"></td>
-                              <td><input type="checkbox" name="newerrors" [checked]="item.newerrors"></td>
-                              <td><input type="checkbox" name="impactincreased" [checked]="item.impactincreased"></td>
-                              <td>
-                                <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <ul class="btn-list clearfix">
-                            <li>
-                              <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Email</button>
-                            </li>
-                        </ul>
-                  </md-tab>
-                </md-tab-group>
-                  
-          </form>          
-        </div>
-      </div>
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <md-tab-group>
+          <md-tab label="Perfil">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" id="name" placeholder="Nome do usuario">
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" class="form-control" id="email" placeholder="Email">
+              </div>
+
+              <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Salvar Perfil</button>
+
+            </div>
+          </md-tab>
+          <md-tab label="Email">
+
+            <div class="horizontal-scroll">
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th class="table-id">#</th>
+                    <th>Log</th>
+                    <th>Sumário diário</th>
+                    <th>Novos Erros</th>
+                    <th>Aumento do Impacto</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of emailParametersUser">
+                    <td class="table-id">{{ item.id }}</td>
+                    <td>{{ item.log }}</td>
+                    <td><input type="checkbox" name="summarydaily" [checked]="item.summarydaily"></td>
+                    <td><input type="checkbox" name="newerrors" [checked]="item.newerrors"></td>
+                    <td><input type="checkbox" name="impactincreased" [checked]="item.impactincreased"></td>
+                    <td>
+                      <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <button type="button" class="btn btn-primary"><i class="ion-android-download"></i>Salvar Email</button>
+
+          </md-tab>
+        </md-tab-group>
+
+      </form>
+    </div>
+  </div>
 </div>
