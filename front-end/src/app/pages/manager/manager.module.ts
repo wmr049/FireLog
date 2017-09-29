@@ -15,7 +15,7 @@ import { ManagerSystemComponent } from 'app/pages/manager/manager-system/manager
 import { ManagerOrganizationService } from 'app/pages/manager/services/manager-organization.service';
 import { ManagerSystemService } from 'app/pages/manager/services/manager-system.service';
 import { ManagerSystemChartService } from 'app/pages/manager/services/manager-system-chart.service';
-
+ 
 @NgModule({
     imports: [
         CommonModule,

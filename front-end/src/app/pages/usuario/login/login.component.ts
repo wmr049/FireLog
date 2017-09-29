@@ -17,7 +17,7 @@ import { UsuarioService } from 'app/services/usuario.service';
   templateUrl: './login.html',
   styleUrls: ['./login.scss'],
 })
-export class Login implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   errors: any[] = [];

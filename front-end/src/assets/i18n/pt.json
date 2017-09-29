@@ -17,6 +17,7 @@
   },
   "login": {
     "title": "Entre no FireLog",
+    "profile": "Perfil",
     "signup_link": "Novo no FireLog? Inscreva-se!",
     "email": "Email",
     "password": "Senha",
@@ -34,6 +35,7 @@
       "option1": "Opção 1"
     },
     "menu": {
+      "usuario": "Usuario",
       "profile":"Perfil",
       "manager":"Gerenciador",
       "manager-organization":"Organização",

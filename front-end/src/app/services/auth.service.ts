@@ -14,7 +14,7 @@ export class AuthService implements CanActivate {
     this.user = JSON.parse(localStorage.getItem('eio.user'));
 
     if (!this.token) {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/usuario/login'])
       return false;
     }
 

@@ -50,6 +50,10 @@ export class BaPageTop implements OnInit {
     return this.token !== null;
   }
 
+  profile() {
+    this.router.navigateByUrl('/usuario/profile');
+  }
+
   logout() {
     localStorage.removeItem('eio.token');
     localStorage.removeItem('eio.user');

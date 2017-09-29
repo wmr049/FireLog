@@ -3,18 +3,6 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
-        path: 'profile',  // path for our page
-        data: { // custom menu declaration
-          menu: {
-            title: 'general.menu.profile', // menu title
-            icon: 'ion-android-contact', // menu icon
-            pathMatch: 'prefix', // use it if item children not displayed in menu
-            selected: true,
-            order: 0,
-          },
-        },
-      },
-      {
         path: 'dashboard',  // path for our page
         data: { // custom menu declaration
           menu: {

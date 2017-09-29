@@ -1,7 +1,7 @@
 <div class="auth-main">
   <div class="auth-block">
     <h1 translate>{{'register.title'}}</h1>
-    <a routerLink="/login" class="auth-link" translate>{{'register.sign_in_link'}}</a>
+    <a routerLink="/usuario/login" class="auth-link" translate>{{'register.sign_in_link'}}</a>
 
     <form novalidate [formGroup]="inscricaoForm" (ngSubmit)="adicionarUsuario()" class="form-horizontal">
 

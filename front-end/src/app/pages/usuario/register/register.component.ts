@@ -18,7 +18,7 @@ import { UsuarioService } from 'app/services/usuario.service';
   templateUrl: './register.html',
   styleUrls: ['./register.scss'],
 })
-export class Register implements OnInit, AfterViewInit {
+export class RegisterComponent implements OnInit, AfterViewInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
