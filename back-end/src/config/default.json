@@ -1,0 +1,3 @@
+{
+    "connectionString": "mongodb://firelog:reis2000@ds141474.mlab.com:41474/firelog"    
+}

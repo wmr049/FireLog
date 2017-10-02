@@ -61,7 +61,9 @@ exports.post = async (req, res, next) => {
 
     // Se os dados forem inválidos
     if (!contract.isValid()) {
-        res.status(400).send(contract.errors()).end();
+        res.status(400).send({
+            errors: contract.errors()
+        }).end()
         return;
     }
 

@@ -6,14 +6,16 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const config = require('./config')
 
-
 const app = express();
 const router = express.Router();
 
-//Conectar ao banco de dados
+// Conectar ao banco de dados
 mongoose.Promise = require('bluebird');
 
-mongoose.connect(config.connectionString, { useMongoClient: true })
+mongoose.connect(process.env.NODE_ENV == 'dev' ?
+        config.connectionString_dev : config.connectionString, {
+            useMongoClient: true
+        })
     .then(() => {
 
         mongoose.connection.on('connected', function () {
@@ -83,4 +85,3 @@ app.use('/systems', systemRoute);
 app.use('/usersystemnotifications', userSystemNotificationRoute);
 
 module.exports = app;
-

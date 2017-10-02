@@ -4,8 +4,8 @@
   "description": "Api construido com as seguintes Tecnologias:",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/server.js",
-    "test": "mocha -- tests/**/*.js --timeout 10000"
+    "start": "NODE_ENV=prod && node ./bin/server.js",
+    "test": "mocha -- tests/**/*.js"
   },
   "keywords": [],
   "author": "",
