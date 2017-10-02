@@ -1,10 +1,11 @@
 {
   "name": "firelogapi",
   "version": "0.0.1",
-  "description": "",
+  "description": "Api construido com as seguintes Tecnologias:",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/server.js"
+    "start": "node ./bin/server.js",
+    "test": "mocha -- tests/**/*.js --timeout 10000"
   },
   "keywords": [],
   "author": "",
@@ -19,9 +20,16 @@
     "jsonwebtoken": "^7.4.0",
     "md5": "^2.2.1",
     "mongoose": "^4.11.8",
+    "morgan": "^1.9.0",
     "sendgrid": "^2.0.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.3",
     "nodemon": "^1.12.1"
+  },
+  "bin": {
+    "firelogapi": "server.js"
   }
 }

@@ -7,6 +7,24 @@ const authService = require('../services/auth-service');
 
 const emailService = require('../services/email-service');
 
+
+exports.get = async (req, res, next) => {
+
+    try {
+        var data = await repository.get();
+
+        res.status(200).send(data);
+    } catch (error) {
+
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+
+    }
+
+
+}
+
 exports.put = async (req, res, next) => {
 
     let contract = new ValidationContract();
@@ -21,10 +39,10 @@ exports.put = async (req, res, next) => {
         return;
     }
 
-    try {                
+    try {
         var data = await repository.put(req.params.id, req.body);
         this.authenticate(req, res, next);
-        
+
     } catch (error) {
         res.status(500).send({
             message: "Falha ao processar sua requisição"

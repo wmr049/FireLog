@@ -21,7 +21,7 @@ const schema = new Schema({
     },
     active: {
         type: Boolean,
-        required: [true, 'O Status é obrigatório'],
+        required: true,
         default: true
     },
     createDate: {

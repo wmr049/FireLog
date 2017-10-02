@@ -1,9 +1,9 @@
 'use strict';
 
 const ValidationContract = require('../validators/fluent-validator');
-const repository = require('../repositories/system-repository')
-const repositoryOrganization = require('../repositories/organization-repository')
-
+const repository = require('../repositories/user_system_notification-repository')
+const repositorySystem = require('../repositories/system-repository')
+const repositoryUser = require('../repositories/user-repositorie')
 const azure = require('azure-storage');
 const guid = require('guid');
 var config = require('../config');
@@ -34,16 +34,18 @@ exports.getById = async (req, res, next) => {
     }
 }
 
+
 exports.post = async (req, res, next) => {
 
-    const organization = await repositoryOrganization.getById(req.body.organizationId);
+    const system = await repositorySystem.getById(req.body.systemId);
+    const user = await repositoryUser.getById(req.body.userId);
+    const userSystemNotification = await repository.getByUserSystem(user.id, system.id);
 
+    // Validações
     let contract = new ValidationContract();
-
-    contract.hasMinLen(req.body.systemname, 2, 'O nome do sistema deve conter pelo menos 3 caracteres');
-    contract.hasMinLen(req.body.description, 2, 'A descrição do sistema deve conter pelo menos 2 caracteres');
-    contract.isRequired(req.body.organizationId, 'Necessario informar a Organização');
-    contract.isRequired(organization.id, 'Organização informada é inexistente');
+    contract.isRequired(user.id, 'Necessario informar o Usuario');
+    contract.isRequired(system.id, 'Sistema informado é inexistente');
+    contract.isDuplicated(userSystemNotification, 'Esta configuração ja existe');
 
     // Se os dados forem inválidos
     if (!contract.isValid()) {
@@ -53,13 +55,15 @@ exports.post = async (req, res, next) => {
 
     try {
         await repository.create({
-            systemname: req.body.systemname,
-            description: req.body.description,
-            organization: organization.id,
+            user: user.id,
+            system: system.id,
+            daily_digest: req.body.daily_digest,
+            new_error: req.body.new_error,
+            import_increased: req.body.import_increased,
         });
 
         res.status(201).send({
-            message: 'Sistema criado com sucesso'
+            message: 'Configurado permissão usuario sistema'
         });
 
     } catch (e) {

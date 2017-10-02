@@ -1,5 +1,4 @@
 {
-
   "register": {
     "title": "Registre no FireLog",
     "name": "Nome",
@@ -12,12 +11,20 @@
     "share_on_twitter": "Compartilhe no Twitter",
     "share_on_google_plus": "Compartilhe no Google Plus",
     "sign_in_link": "Ja tem uma conta FireLog? Entre!",
-    "error":"Opa! Alguma coisa não deu certo :) !!",
+    "error": "Opa! Alguma coisa não deu certo :) !!",
     "cpf": "CPF"
+  },
+  "profile": {
+    "title": "Perfil",
+    "name": "Nome",
+    "email": "Email",
+    "cpf": "CPF",
+    "password": "Senha",
+    "save": "Salvar Perfil",
+    "back": "Voltar"
   },
   "login": {
     "title": "Entre no FireLog",
-    "profile": "Perfil",
     "signup_link": "Novo no FireLog? Inscreva-se!",
     "email": "Email",
     "password": "Senha",
@@ -36,10 +43,10 @@
     },
     "menu": {
       "usuario": "Usuario",
-      "profile":"Perfil",
-      "manager":"Gerenciador",
-      "manager-organization":"Organização",
-      "manager-system":"Sistemas",
+      "profile": "Perfil",
+      "manager": "Gerenciador",
+      "manager-organization": "Organização",
+      "manager-system": "Sistemas",
       "dashboard": "DashBoard",
       "main": "Principal",
       "repositories": "Repositórios",

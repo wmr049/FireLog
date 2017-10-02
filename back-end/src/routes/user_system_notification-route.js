@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/organization-controller');
+const controller = require('../controllers/user_system_notification-controller');
 const authService = require('../services/auth-service');
 
 router.get('/', authService.isAdmin, controller.get);

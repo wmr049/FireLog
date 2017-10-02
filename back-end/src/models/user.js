@@ -22,18 +22,6 @@ const schema = new Schema({
     password: {
         type: String,
         required: true
-    },    
-    daily_digest: {
-        type: Boolean,        
-        default: false
-    },
-    new_error: {
-        type: Boolean,        
-        default: false
-    },
-    import_increased: {
-        type: Boolean,        
-        default: false
     },
     roles: [{
         type: String,
@@ -43,7 +31,7 @@ const schema = new Schema({
     }],
     active: {
         type: Boolean,
-        required: [true, 'O Status é obrigatório'],
+        required: true,
         default: true
     },
     createDate: {
@@ -53,4 +41,11 @@ const schema = new Schema({
     }
 });
 
+schema.pre('save', next => {
+    const now = new Date();
+    if (!this.createDate) {
+        this.createDate = now;
+    }
+    next();
+})
 module.exports = mongoose.model('User', schema);

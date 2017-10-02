@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const UserOrganization = mongoose.model('UserOrganization');
 
 exports.get = async () => {
-    const res = await Product
+    const res = await UserOrganization
         .find({
             active: true
         });
@@ -12,6 +12,6 @@ exports.get = async () => {
 }
 
 exports.getById = async (id) => {
-    const res = await ApiKey.findById(id);
+    const res = await UserOrganization.findById(id);
     return res;
 }

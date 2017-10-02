@@ -6,6 +6,16 @@ function ValidationContract() {
     errors = [];
 }
 
+ValidationContract.prototype.IsEqual = (value1, value2, message) => {
+    if (value1 != value2)
+        errors.push({ message: message });
+}
+ValidationContract.prototype.isDuplicated = (value, message) => {
+    if (value.length > 0)
+        errors.push({ message: message });
+}
+
+
 ValidationContract.prototype.isRequired = (value, message) => {
     if (!value || value.length <= 0)
         errors.push({ message: message });
@@ -32,8 +42,8 @@ ValidationContract.prototype.isEmail = (value, message) => {
         errors.push({ message: message });
 }
 
-ValidationContract.prototype.errors = () => { 
-    return errors; 
+ValidationContract.prototype.errors = () => {
+    return errors;
 }
 
 ValidationContract.prototype.clear = () => {

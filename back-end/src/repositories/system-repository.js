@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const System = mongoose.model('System');
 
 exports.get = async () => {
-    const res = await Product
+    const res = await System
         .find({
             active: true
         });
@@ -12,6 +12,12 @@ exports.get = async () => {
 }
 
 exports.getById = async (id) => {
-    const res = await ApiKey.findById(id);
+    const res = await System.findById(id);
     return res;
+}
+
+exports.create = async (data) => {
+    var system = new System(data);
+
+    await system.save();
 }
