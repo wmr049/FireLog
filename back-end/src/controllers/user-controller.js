@@ -8,7 +8,7 @@ const authService = require('../services/auth-service');
 const emailService = require('../services/email-service');
 
 
-exports.get = async (req, res, next) => {
+exports.get = async(req, res, next) => {
 
     try {
         var data = await repository.get();
@@ -17,7 +17,8 @@ exports.get = async (req, res, next) => {
     } catch (error) {
 
         res.status(500).send({
-            message: 'Falha ao processar sua requisição'
+            success: false,
+            errors: 'Falha ao processar sua requisição'
         });
 
     }
@@ -25,33 +26,7 @@ exports.get = async (req, res, next) => {
 
 }
 
-exports.put = async (req, res, next) => {
-
-    let contract = new ValidationContract();
-
-    contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres');
-    contract.isEmail(req.body.email, 'E-mail inválido');
-    contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres');
-
-    // Se os dados forem inválidos
-    if (!contract.isValid()) {
-        res.status(400).send(contract.errors()).end();
-        return;
-    }
-
-    try {
-        var data = await repository.put(req.params.id, req.body);
-        this.authenticate(req, res, next);
-
-    } catch (error) {
-        res.status(500).send({
-            message: "Falha ao processar sua requisição"
-        });
-    }
-
-}
-
-exports.post = async (req, res, next) => {
+exports.put = async(req, res, next) => {
 
     let contract = new ValidationContract();
 
@@ -62,6 +37,49 @@ exports.post = async (req, res, next) => {
     // Se os dados forem inválidos
     if (!contract.isValid()) {
         res.status(400).send({
+                success: false,
+                errors: contract.errors()
+            }
+
+        ).end();
+        return;
+    }
+
+    try {
+        var data = await repository.put(req.params.id, req.body);
+        this.authenticate(req, res, next);
+
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            errors: 'Falha ao processar sua requisição'
+        });
+    }
+
+}
+
+exports.post = async(req, res, next) => {
+
+    let contract = new ValidationContract();
+
+    contract.isRequired(req.body.password, 'É necessario informar a senha');
+    contract.isRequired(req.body.name, 'É necessario informar o nome');
+    contract.isRequired(req.body.email, 'É necessario informar o email');
+    contract.isRequired(req.body.cpf, 'É necessario informar o CPF');        
+    
+    contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres');
+    contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.email, 6, 'O email deve conter pelo menos 6 caracteres');
+    contract.hasMinLen(req.body.cpf, 11, 'O CPF deve conter pelo menos 11 caracteres');    
+
+    contract.isEmail(req.body.email, 'E-mail inválido');
+    
+
+
+    // Se os dados forem inválidos
+    if (!contract.isValid()) {
+        res.status(400).send({
+            success: false,
             errors: contract.errors()
         }).end()
         return;
@@ -85,12 +103,13 @@ exports.post = async (req, res, next) => {
 
     } catch (e) {
         res.status(500).send({
-            message: 'Falha ao processar sua requisição'
+            success: false,
+            errors: 'Falha ao processar sua requisição'
         });
     }
 };
 
-exports.authenticate = async (req, res, next) => {
+exports.authenticate = async(req, res, next) => {
     try {
         const user = await repository.authenticate({
             email: req.body.email,
@@ -99,7 +118,8 @@ exports.authenticate = async (req, res, next) => {
 
         if (!user) {
             res.status(404).send({
-                message: 'Usuário ou senha inválidos'
+                success: false,
+                errors: 'Usuário ou senha inválidos'
             });
             return;
         }
@@ -126,12 +146,13 @@ exports.authenticate = async (req, res, next) => {
         });
     } catch (e) {
         res.status(500).send({
-            message: 'Falha ao processar sua requisição'
+            success: false,
+            errors: 'Falha ao processar sua requisição'
         });
     }
 };
 
-exports.refreshToken = async (req, res, next) => {
+exports.refreshToken = async(req, res, next) => {
     try {
         const token = req.body.token || req.query.token || req.headers['x-access-token'];
         const data = await authService.decodeToken(token);
@@ -140,7 +161,8 @@ exports.refreshToken = async (req, res, next) => {
 
         if (!user) {
             res.status(404).send({
-                message: 'Cliente não encontrado'
+                success: false,
+                errors: 'Cliente não encontrado'
             });
             return;
         }
@@ -167,7 +189,8 @@ exports.refreshToken = async (req, res, next) => {
         });
     } catch (e) {
         res.status(500).send({
-            message: 'Falha ao processar sua requisição'
+            success: false,
+            errors: 'Falha ao processar sua requisição'
         });
     }
 };

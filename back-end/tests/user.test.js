@@ -4,12 +4,12 @@
 process.env.NODE_ENV = 'dev';
 
 const mongoose = require("mongoose");
-const User = require("../../src/models/user");
+const User = require("../src/models/user");
 
 // É requerido as dependencias de desenvolvimento
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-const server = require("../../src/app");
+const server = require("../src/app");
 const should = chai.should();
 
 chai.use(chaiHttp);
@@ -24,7 +24,7 @@ describe('Users', () => {
 
     // Testar a rota /GET
     describe('/GET users', () => {
-        it('Metodo busca todos os usuarios do sistema', (done) => {
+        it('Validar serviço ativo e limpar dados da tabela user.', (done) => {
             chai.request(server)
                 .get('/users')
                 .end((err, res) => {
@@ -37,13 +37,13 @@ describe('Users', () => {
     });
 
 
-    describe('/POS user', () => {
-        it('Testar validação de campo obrigatório na criação do usuario', (done) => {
+    describe('/POST user', () => {
+        it('Validar trava de campos requeridos ao criar usuario (bloqueio).', (done) => {
 
             const user = {
                 "name": "Marcia Lira",
                 "email": "papelaria_reis@hotmail.com",
-                
+
                 "cpf": "30877030872"
             }
 
@@ -53,9 +53,13 @@ describe('Users', () => {
                 .end((err, res) => {
                     res.should.have.status(400);
                     res.body.should.be.a('object');
-                    res.body.should.have.property('errors');
-                    res.body.errors.should.have.property('pages');
-                    res.body.errors.pages.should.have.property('kind').eql('required');
+                    res.body.should.have.property('success').eql(false);                    
+                    res.body.should.have.property('errors');    
+                    
+                    res.body.errors[0].should.eql('É necessario informar a senha');
+                    res.body.errors[1].should.eql('É necessario informar o nome');
+                    
+                                        
                     done();
                 });
         });
