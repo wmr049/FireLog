@@ -7,21 +7,72 @@ const authService = require('../services/auth-service');
 
 const emailService = require('../services/email-service');
 
-
 exports.get = async(req, res, next) => {
 
     try {
         var data = await repository.get();
 
-        res.status(200).send(data);
-    } catch (error) {
-
-        res.status(500).send({
-            success: false,
-            errors: [ e.message ]
+        res.status(200).send({
+            success: true,
+            data: data
         });
 
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            errors: [e.message]
+        });
     }
+}
+
+exports.getById = async(req, res, next) => {
+
+    try {
+        var data = await repository.getById(req.params.id);
+        res.status(200).send({
+            success: true,
+            data: data
+        });
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            errors: [e.message]
+        });
+    }
+
+}
+
+exports.getByPage = async(req, res, next) => {
+
+    var page = parseInt(req.params.page);
+    var per_page = parseInt(req.params.per_page);
+
+    // Definir quantidades de itens por pagina e qual a pagina
+    
+    if (!req.params.page) {
+        page = 1
+    }
+
+    if (!req.params.per_page) {
+        per_page = 1
+    }
+
+    try {        
+
+        var data = await repository.getByPage(page, per_page);
+
+        res.status(200).send({
+            success: true,
+            data: data
+        })
+    } catch (e) {
+        res.status(500).send({
+            success: false,
+            errors: [e.message]
+        });
+    }
+
+
 
 
 }
@@ -47,12 +98,13 @@ exports.put = async(req, res, next) => {
 
     try {
         var data = await repository.put(req.params.id, req.body);
+
         this.authenticate(req, res, next);
 
     } catch (error) {
         res.status(500).send({
             success: false,
-            errors: [ e.message ]
+            errors: [e.message]
         });
     }
 
@@ -65,15 +117,15 @@ exports.post = async(req, res, next) => {
     contract.isRequired(req.body.password, 'É necessario informar a senha');
     contract.isRequired(req.body.name, 'É necessario informar o nome');
     contract.isRequired(req.body.email, 'É necessario informar o email');
-    contract.isRequired(req.body.cpf, 'É necessario informar o CPF');        
-    
+    contract.isRequired(req.body.cpf, 'É necessario informar o CPF');
+
     contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres');
     contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres');
     contract.hasMinLen(req.body.email, 6, 'O email deve conter pelo menos 6 caracteres');
-    contract.hasMinLen(req.body.cpf, 11, 'O CPF deve conter pelo menos 11 caracteres');    
+    contract.hasMinLen(req.body.cpf, 11, 'O CPF deve conter pelo menos 11 caracteres');
 
     contract.isEmail(req.body.email, 'E-mail inválido');
-    
+
 
 
     // Se os dados forem inválidos
@@ -104,13 +156,15 @@ exports.post = async(req, res, next) => {
     } catch (e) {
         res.status(500).send({
             success: false,
-            errors: [ e.message ]
+            errors: [e.message]
         });
     }
 };
 
 exports.authenticate = async(req, res, next) => {
     try {
+
+
         const user = await repository.authenticate({
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY)
@@ -191,7 +245,7 @@ exports.refreshToken = async(req, res, next) => {
     } catch (e) {
         res.status(500).send({
             success: false,
-            errors: [ e.message ]
+            errors: [e.message]
         });
     }
 };

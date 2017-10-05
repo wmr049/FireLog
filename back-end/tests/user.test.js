@@ -24,19 +24,150 @@ describe('Users', () => {
 
     // Testar a rota /GET
     describe('/GET users', () => {
-        it('Validar serviço ativo e limpar dados da tabela user.', (done) => {
+        it('Validar serviço ativo e sem dados na collection user.', (done) => {
             chai.request(server)
                 .get('/users')
                 .end((err, res) => {
                     res.should.have.status(200);
-                    res.body.should.be.a('array');
-                    res.body.length.should.be.eql(0);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('success').eql(true);
+
+                    res.body.should.have.property('data');
+                    res.body.data.length.should.be.eql(0);
+
                     done();
                 });
         });
+
+        it('Validar busca de Todos os usuarios cadastrados.', (done) => {
+
+            const user1 = new User({
+                name: "Milton Reis",
+                email: "wmr049@gmail.com",
+                password: "reis2000",
+                cpf: "30877030871",
+                roles: ['admin']
+            });
+            user1.save();
+
+            const user2 = new User({
+                name: "Cora Lafe",
+                email: "coralage@hotmail.com",
+                password: "reis2000",
+                cpf: "30877030872",
+                roles: ['user']
+            });
+            user2.save();
+
+
+            chai.request(server)
+                .get('/users/')
+                .end((err, res) => {
+
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('success').eql(true);
+                    res.body.should.have.property('data');
+
+                    res.body.data.length.should.be.eql(2);
+
+                    done();
+                })
+        })
+
+        it('Validar busca de Usuarios paginados.', (done) => {
+
+            const user1 = new User({
+                name: "Milton Reis",
+                email: "wmr049@gmail.com",
+                password: "reis2000",
+                cpf: "30877030871",
+                roles: ['admin']
+            });
+            user1.save();
+
+            const user2 = new User({
+                name: "Cora Lafe",
+                email: "coralage@hotmail.com",
+                password: "reis2000",
+                cpf: "30877030872",
+                roles: ['user']
+            });
+            user2.save();
+
+            const user3 = new User({
+                name: "Marcia Lira",
+                email: "papelaria_reis@hotmail.com",
+                password: "reis2000",
+                cpf: "30877030872",
+                roles: ['user']
+            });
+            user3.save();
+
+            const user4 = new User({
+                name: "Herlado Reis",
+                email: "hreis049@hotmail.com",
+                password: "reis2000",
+                cpf: "30877030872",
+                roles: ['user']
+            });
+            user4.save();
+
+
+            chai.request(server)
+                .get('/users/2/1')
+                .end((err, res) => {
+
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('success').eql(true);
+                    res.body.should.have.property('data');
+
+                    res.body.data.length.should.be.eql(1);
+
+                    done();
+                })
+        })
+
+        it('Validar busca de Usuario por Id', (done) => {
+            const user = new User({
+                name: "Milton Reis",
+                email: "wmr049@gmail.com",
+                password: "reis2000",
+                cpf: "30877030871",
+                roles: [
+                    'user'
+                ]
+            });
+
+            user.save((err, user) => {
+                chai.request(server)
+                    .get('/users/' + user.id)
+                    .send(user)
+                    .end((err, res) => {
+
+                        res.should.have.status(200);
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('success').eql(true);
+                        res.body.should.have.property('data');
+
+                        res.body.data.should.have.property('_id');
+                        res.body.data.should.have.property('email');
+                        res.body.data.should.have.property('password');
+                        res.body.data.should.have.property('cpf');
+                        res.body.data.should.have.property('createDate');
+                        res.body.data.should.have.property('active');
+                        res.body.data.should.have.property('roles');
+
+                        done();
+                    })
+            })
+
+        })
+
     });
 
-
+    // Testar a rota /POST
     describe('/POST user', () => {
         it('Validar trava de campos requeridos ao criar usuario (bloqueio).', (done) => {
 
@@ -72,9 +203,9 @@ describe('Users', () => {
 
             const user = {
                 name: "Cora Lafe",
-                email:"coralafe@gmail.com",
-                password:"reis2000",
-                cpf:"30877030872"
+                email: "coralafe@gmail.com",
+                password: "reis2000",
+                cpf: "30877030872"
             }
 
             chai.request(server)
@@ -86,12 +217,77 @@ describe('Users', () => {
                     res.body.should.have.property('success').eql(true);
                     res.body.should.have.property('data');
 
-                    res.body.data[0].should.have.property('user');
-                                        
+                    res.body.data.should.have.property('user');
+                    res.body.data.user.should.have.property('id');
+                    res.body.data.user.should.have.property('email').eql('coralafe@gmail.com');
+                    res.body.data.user.should.have.property('name').eql('Cora Lafe');
+                    res.body.data.user.should.have.property('cpf').eql('30877030872');
+
+                    res.body.data.user.should.have.property('roles');
+                    res.body.data.user.roles[0].should.eql('user');
+
+                    res.body.data.should.have.property('token');
+
                     done();
                 });
         });
 
 
     });
+
+    // Testar a rota de /PUT/:id atualizando usuario
+    describe('/PUT/:id user', () => {
+        it('Validar atualização do usuario', (done) => {
+
+            const user = new User({
+                name: "Milton Reis",
+                email: "wmr049@gmail.com",
+                password: "reis2000",
+                cpf: "30877030871",
+                roles: [
+                    'user'
+                ]
+            });
+
+            user.save((err, user) => {
+                chai.request(server)
+                    .put('/users/' + user.id)
+                    .send({
+                        name: "Milton O. Reis",
+                        email: "milton.oliveira.reis@hotmail.com",
+                        password: "reis2000",
+                        cpf: "12345678910",
+                        roles: [
+                            'admin'
+                        ]
+                    })
+                    .end((err, res) => {
+
+                        res.should.have.status(201);
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('success').eql(true);
+                        res.body.should.have.property('data');
+
+                        res.body.data.should.have.property('user');
+                        res.body.data.user.should.have.property('id');
+                        res.body.data.user.should.have.property('email');
+                        res.body.data.user.should.have.property('name');
+                        res.body.data.user.should.have.property('cpf');
+
+                        res.body.data.user.should.have.property('roles');
+
+                        res.body.data.should.have.property('token');
+
+                        done();
+                    })
+            })
+
+        })
+    })
+
+    // Validar a Authenticação de usuario
+    describe('/POST/Authenticate', () => {
+
+    })
+
 });

@@ -1,6 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const md5 = require('md5');
 
 exports.put = async (id, data) => {
     await User
@@ -9,7 +10,10 @@ exports.put = async (id, data) => {
                 name: data.name,
                 email: data.email,
                 cpf: data.cpf,
-                roles: data.roles
+                password: md5(data.password + global.SALT_KEY),
+                roles: [ 
+                    data.roles
+                ]
             }
         })
 }
@@ -35,6 +39,12 @@ exports.getById = async (id) => {
 exports.get = async () => {
     const res = await User
         .find();
+
+    return res;
+}
+
+exports.getByPage = async (page, per_page) => {
+    const res = User.find().sort('createDate').skip((page-1)*per_page).limit(per_page);
 
     return res;
 }
