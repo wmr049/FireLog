@@ -18,7 +18,7 @@ exports.get = async(req, res, next) => {
 
         res.status(500).send({
             success: false,
-            errors: 'Falha ao processar sua requisição'
+            errors: [ e.message ]
         });
 
     }
@@ -52,7 +52,7 @@ exports.put = async(req, res, next) => {
     } catch (error) {
         res.status(500).send({
             success: false,
-            errors: 'Falha ao processar sua requisição'
+            errors: [ e.message ]
         });
     }
 
@@ -104,7 +104,7 @@ exports.post = async(req, res, next) => {
     } catch (e) {
         res.status(500).send({
             success: false,
-            errors: 'Falha ao processar sua requisição'
+            errors: [ e.message ]
         });
     }
 };
@@ -133,6 +133,7 @@ exports.authenticate = async(req, res, next) => {
         });
 
         res.status(201).send({
+            success: true,
             data: {
                 user: {
                     id: user._id,
@@ -190,7 +191,7 @@ exports.refreshToken = async(req, res, next) => {
     } catch (e) {
         res.status(500).send({
             success: false,
-            errors: 'Falha ao processar sua requisição'
+            errors: [ e.message ]
         });
     }
 };
