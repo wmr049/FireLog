@@ -24,7 +24,7 @@ export abstract class ServiceBase {
     this.token = localStorage.getItem('eio.token');
 
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', `Bearer ${this.token}`);
+    headers.append('x-access-token', this.token);
     const options = new RequestOptions({ headers });
     return options;
   }
@@ -38,7 +38,7 @@ export abstract class ServiceBase {
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
-    console.error(error);
+    // console.error(error);
     return Observable.throw(error);
   }
 

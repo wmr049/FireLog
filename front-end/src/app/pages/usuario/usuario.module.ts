@@ -15,7 +15,7 @@ import { LoginComponent } from 'app/pages/usuario/login/login.component';
 import { ProfileComponent } from 'app/pages/usuario/profile/profile.component';
 
 // Services
-import { ProfileService } from 'app/pages/usuario/services/profile.service';
+import { UsuarioService } from 'app/pages/usuario/services/usuario.service';
 
 @NgModule({
   imports: [
@@ -34,7 +34,7 @@ import { ProfileService } from 'app/pages/usuario/services/profile.service';
     ProfileComponent,
   ],
   providers: [
-    ProfileService,
+    UsuarioService,
   ],
 })
 
