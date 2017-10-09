@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService implements CanActivate {
-  public token: string;
-  public user;
+  token: string;
+  user;
 
   constructor(private router: Router) { }
 
@@ -14,7 +14,7 @@ export class AuthService implements CanActivate {
     this.user = JSON.parse(localStorage.getItem('eio.user'));
 
     if (!this.token) {
-      this.router.navigate(['/usuario/login'])
+      this.router.navigate(['/usuario/login']);
       return false;
     }
 
@@ -28,7 +28,7 @@ export class AuthService implements CanActivate {
           return false;
         }
 
-        let userClaims = this.user.claims.some(x => x.type === claim.nome && x.value === claim.valor);
+        const userClaims = this.user.claims.some(x => x.type === claim.nome && x.value === claim.valor);
         if (!userClaims) {
           this.router.navigate(['/acesso-negado']);
           return false;

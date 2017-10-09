@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .then((toast: Toast) => {
         setTimeout(() => {
           this.toastr.dismissToast(toast);
-          this.router.navigate(['/pages/dashboard']);
+          this.router.navigate(['/pages/main']);
         }, 3500);
       });
   }

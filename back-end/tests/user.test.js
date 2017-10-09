@@ -11,6 +11,7 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 const server = require("../src/app");
 const should = chai.should();
+const assert = require('assert');
 
 chai.use(chaiHttp);
 // Nosso bloco pai
@@ -285,9 +286,103 @@ describe('Users', () => {
         })
     })
 
-    // Validar a Authenticação de usuario
-    describe('/POST/Authenticate', () => {
+    // Validar o renovação de um token
+    describe('/POST/users/refresh-token', () => {
+        it('Validar Atualização do Token (retorno do novo Token).', (done) => {
 
+
+            var token = '';
+            var tokenRefresh = '';
+
+            // Cria o usuario
+            const user = new User({
+                name: "Cora Lafe",
+                email: "coralafe@gmail.com",
+                password: "reis2000",
+                cpf: "30877030872"
+            });
+
+
+            chai.request(server)
+                .post('/users')
+                .send(user)
+                .end((err, res) => {
+                    token = res.body.data.token;
+
+                    chai.request(server)
+                        .post('/users/refresh-token')
+                        .set('x-access-token', token)
+                        .end((err, res) => {                            
+                            tokenRefresh = res.body.data.token;
+
+                            res.should.have.status(201);
+                            assert.equal(token, tokenRefresh, 'Token novo deve ser diferente do antigo.');
+
+
+                            done();
+                        });
+                });
+
+
+
+
+        });
+    });
+
+    // Validar a Authenticação de usuario
+    describe('/POST/users/Authenticate', () => {
+        it('Validar autenticação do usuario (retorno do Token e usuario)', (done) => {
+
+
+            // Cria o usuario
+            const user = new User({
+                name: "Cora Lafe",
+                email: "coralafe@gmail.com",
+                password: "reis2000",
+                cpf: "30877030872"
+            });
+
+            chai.request(server)
+                .post('/users')
+                .send(user)
+                .end((err, res) => {
+
+                    done();
+                });
+
+            // Autentica o usuario
+            const userAuth = {
+                email: "coralafe@gmail.com",
+                password: "reis2000"
+            }
+
+            chai.request(server)
+                .post('/users/authenticate')
+                .send(userAuth)
+                .end((err, res) => {
+                    res.should.have.status(201);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('success').eql(true);
+                    res.body.should.have.property('data');
+
+                    res.body.data.should.have.property('user');
+                    res.body.data.user.should.have.property('id');
+                    res.body.data.user.should.have.property('email').eql('coralafe@gmail.com');
+                    res.body.data.user.should.have.property('name').eql('Cora Lafe');
+                    res.body.data.user.should.have.property('cpf').eql('30877030872');
+
+                    res.body.data.user.should.have.property('roles');
+                    res.body.data.user.roles[0].should.eql('user');
+
+                    res.body.data.should.have.property('token');
+
+                    assert.equal(5, 5, '5 is strictly greater than 2');
+
+                    done();
+                });
+
+
+        })
     })
 
 });

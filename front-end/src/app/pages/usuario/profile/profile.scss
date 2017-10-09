@@ -1,53 +1,52 @@
 @import '../../../theme/sass/auth';
-
-
 @media screen and (min-width: 1620px) {
-    .row.shift-up {
-      > * {
-        margin-top: -573px;
-      }
-    }
-
-    
-  }
-  
-  @media screen and (max-width: 1620px) {
-    .card.feed-panel.large-card {
-      height: 824px;
+  .row.shift-up {
+    >* {
+      margin-top: -573px;
     }
   }
-   
-  th {
-    text-align: center; 
-    vertical-align: middle;
-  }
-
-  td {
-    text-align: center; 
-    vertical-align: middle;
-  }
-
-  .user-stats-card {
-    .card-title {
-      padding: 0 0 15px;
-    }
-  }
-  
-  .blurCalendar {
-    height: 475px;
-  }
-  
-  .jumbotron{
-    text-align: center;
-  }
-
-  .btn-success {
-    color: #fff;
-    background-color: #209e91;
-    border-color: #209e91;
-
-    #main { 
-      color: #000000;  
-    }
 }
 
+@media screen and (max-width: 1620px) {
+  .card.feed-panel.large-card {
+    height: 824px;
+  }
+}
+
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.user-stats-card {
+  .card-title {
+    padding: 0 0 15px;
+  }
+}
+
+.blurCalendar {
+  height: 475px;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #209e91;
+  border-color: #209e91;
+  #main {
+    color: #000000;
+  }
+}
+
+.tab-profile {
+  height: 100%;
+  overflow: hidden;
+}
