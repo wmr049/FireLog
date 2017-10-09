@@ -1,9 +1,8 @@
 export class Usuario {
   id: string;
   name: string;
-  CPF: string;
+  cpf: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
- 

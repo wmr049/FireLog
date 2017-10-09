@@ -1,16 +1,31 @@
 import { Injectable } from '@angular/core';
+import { ServiceBase } from 'app/services/service.base';
+import { Usuario } from 'app/pages/usuario/models/usuario';
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 
 @Injectable()
-export class ProfileService {
-    
-  
+export class UsuarioService extends ServiceBase {
+
+  constructor(private http: Http) { super(); }
+
+  atualizarUsuario(usuario: Usuario): Observable<Usuario> {
+    const options = this.obterAuthHeader();
+
+    const response = this.http
+      .put(this.urlServiceV1 + 'users/' + usuario.id, usuario, options)
+      .map(super.extractData)
+      .catch((super.serviceError));
+    return response;
+  }
+
   emailParametersUser = [
         {
           id: 1,
           log: 'SGA',
           summarydaily: true,
           newerrors: true,
-          impactincreased: true,          
+          impactincreased: true,
           status: 'info',
         },
         {
@@ -18,7 +33,7 @@ export class ProfileService {
           log: 'Sala Virtual',
           summarydaily: false,
           newerrors: false,
-          impactincreased: true,          
+          impactincreased: true,
           status: 'primary',
         },
         {
@@ -26,7 +41,7 @@ export class ProfileService {
           log: 'SEAVI',
           summarydaily: false,
           newerrors: false,
-          impactincreased: false,          
+          impactincreased: false,
           status: 'success',
         },
         {
@@ -34,7 +49,7 @@ export class ProfileService {
           log: 'Portal do Aluno',
           summarydaily: true,
           newerrors: true,
-          impactincreased: true,          
+          impactincreased: true,
           status: 'danger',
         },
         {
@@ -42,8 +57,8 @@ export class ProfileService {
           log: 'Extrato Bcash',
           summarydaily: true,
           newerrors: false,
-          impactincreased: true,          
+          impactincreased: true,
           status: 'warning',
         },
-      ];                    
+      ];
 }
