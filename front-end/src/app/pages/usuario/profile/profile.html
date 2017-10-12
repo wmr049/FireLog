@@ -7,6 +7,14 @@
         <form novalidate (ngSubmit)="editarUsuario()" [formGroup]="usuarioForm">
           <md-tab-group>
             <md-tab label="{{'profile.title' | translate}}">
+
+              <div class="alert alert-danger" *ngIf="errors.length > 0">
+                <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+                <ul>
+                  <li *ngFor="let error of errors">{{ error }}</li>
+                </ul>
+              </div>
+
               <div class="row">
                 <div class="col-md-6">
 
@@ -17,7 +25,7 @@
                   <div class="form-group">
                     <label for="email" translate>{{'profile.email'}}</label>
                     <input type="text" class="form-control" id="email" placeholder="{{'profile.email' | translate}}" formControlName="email"
-                    />
+                      disabled=true />
                   </div>
 
                 </div>
@@ -29,7 +37,7 @@
                     <input type="text" class="form-control" id="cpf" placeholder="{{'profile.cpf' | translate }}" formControlName="cpf" />
                   </div>
                   <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-with-icon" translate><i class="ion-locked"></i>{{'profile.password'}}</button>
+                    <button type="button" class="btn btn-primary btn-with-icon" (click)="passwordModalShow()" translate><i class="ion-locked"></i>{{'profile.password'}}</button>
                   </div>
 
                 </div>

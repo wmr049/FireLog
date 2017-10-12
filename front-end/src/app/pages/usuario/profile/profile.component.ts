@@ -10,6 +10,9 @@ import { Observable } from 'rxjs/Observable';
 import { GenericValidator } from 'app/utils/forms.generic.validator';
 import { ToastsManager, Toast } from 'ng2-toastr';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
+
 @Component({
   selector: 'nga-profile',
   styleUrls: ['./profile.scss'],
@@ -36,7 +39,8 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private toastr: ToastsManager,
     private sanitizer: DomSanitizer,
-    vcr: ViewContainerRef) {
+    vcr: ViewContainerRef,
+    private modalService: NgbModal) {
 
     this.toastr.setRootViewContainerRef(vcr);
 
@@ -83,18 +87,18 @@ export class ProfileComponent implements OnInit {
       const profileUser = Object.assign({}, this.usuario, this.usuarioForm.value);
 
       const user = {
-        'id': '59d5ec60a900b03c94dfe027',
-        'name': 'Milton Oliveira Reis',
-        'email': 'milton.oliveira.reis@gmail.com',
+        'id': profileUser.id,
+        'name': profileUser.name,
+        'email': profileUser.email,
         'password': 'reis2000',
         'confirmPassword': 'reis2000',
-        'cpf': '30877030871',
-        'roles': 'admin',
+        'cpf': profileUser.cpf,
+        'roles': profileUser.roles[0],
       };
 
       this.usuarioService.atualizarUsuario(user)
         .subscribe(
-        result => { this.onSaveComplete(); },
+        result => { this.onSaveComplete(result); },
         error => {
           this.errors = JSON.parse(error._body).errors;
         });
@@ -112,8 +116,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onSaveComplete(): void {
+  onSaveComplete(response: any): void {
     this.errors = [];
+
+    localStorage.setItem('eio.token', response.token);
+    localStorage.setItem('eio.user', JSON.stringify(response.user));
 
     this.toastr.success('Usuario atualizado com sucesso!', 'Oba :D', { dismiss: 'controlled' })
       .then((toast: Toast) => {
@@ -122,6 +129,11 @@ export class ProfileComponent implements OnInit {
           this.router.navigate(['/pages/main']);
         }, 2500);
       });
+  }
+
+  passwordModalShow() {
+    const activeModal = this.modalService.open(ModalComponent, { size: 'lg' });
+    activeModal.componentInstance.modalHeader = 'Alterar Senha';
   }
 }
 
