@@ -1,89 +1,10 @@
-<div class="auth-main">
-
-  <div class="auth-profile">
-    <h1 translate>{{'profile.title'}}</h1>
-    <div class="row">
-      <div class="col-md-12">
-        <form novalidate (ngSubmit)="editarUsuario()" [formGroup]="usuarioForm">
-          <md-tab-group>
-            <md-tab label="{{'profile.title' | translate}}">
-
-              <div class="alert alert-danger" *ngIf="errors.length > 0">
-                <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
-                <ul>
-                  <li *ngFor="let error of errors">{{ error }}</li>
-                </ul>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6">
-
-                  <div class="form-group">
-                    <label for="name" translate>{{'profile.name'}}</label>
-                    <input type="text" class="form-control" id="name" placeholder="{{'profile.name' | translate}}" formControlName="name" />
-                  </div>
-                  <div class="form-group">
-                    <label for="email" translate>{{'profile.email'}}</label>
-                    <input type="text" class="form-control" id="email" placeholder="{{'profile.email' | translate}}" formControlName="email"
-                      disabled=true />
-                  </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                  <div class="form-group">
-                    <label for="cpf" translate>{{'profile.cpf'}}</label>
-                    <input type="text" class="form-control" id="cpf" placeholder="{{'profile.cpf' | translate }}" formControlName="cpf" />
-                  </div>
-                  <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-with-icon" (click)="passwordModalShow()" translate><i class="ion-locked"></i>{{'profile.password'}}</button>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-with-icon" translate><i class="ion-checkmark-round"></i>{{'profile.save'}}</button>
-              <button type="button" class="btn btn-danger btn-with-icon" [routerLink]="['/pages/dashboard']" translate><i class="ion-reply"></i>{{'profile.back'}}</button>
-
-            </md-tab>
-            <md-tab label="{{'profile.email' | translate}}">
-
-              <div class="horizontal-scroll">
-                <table class="table table-condensed">
-                  <thead>
-                    <tr>
-                      <th class="table-id">#</th>
-                      <th>Log</th>
-                      <th>Sumário diário</th>
-                      <th>Novos Erros</th>
-                      <th>Aumento do Impacto</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let item of emailParametersUser">
-                      <td class="table-id">{{ item.id }}</td>
-                      <td>{{ item.log }}</td>
-                      <td><input type="checkbox" name="summarydaily" [checked]="item.summarydaily"></td>
-                      <td><input type="checkbox" name="newerrors" [checked]="item.newerrors"></td>
-                      <td><input type="checkbox" name="impactincreased" [checked]="item.impactincreased"></td>
-                      <td>
-                        <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <button type="button" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i>Salvar Email</button>
-
-            </md-tab>
-          </md-tab-group>
-
-        </form>
-      </div>
-    </div>
+<ngui-tab selected="js" selected-index-class="selected" selected-contents-class="fadeIn animated">
+  <div class="tabs">
+    <div index="html">HTML</div>
+    <div index="js">Javascript</div>
   </div>
-</div>
+  <div class="tab-contents">
+    <div contents="html">HTML {{1}}</div>
+    <div contents="js">Javascript {{1}}</div>
+  </div>
+</ngui-tab>

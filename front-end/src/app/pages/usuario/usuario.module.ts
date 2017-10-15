@@ -5,6 +5,7 @@ import { MatTabsModule } from '@angular/material';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppTranslationModule } from 'app/app.translation.module';
 import { NgaModule } from 'app/theme/nga.module';
+import { NguiTabModule } from '@ngui/tab';
 
 import { routing } from './usuario.routing';
 
@@ -30,6 +31,7 @@ import { UsuarioService } from 'app/pages/usuario/services/usuario.service';
     routing,
     MatTabsModule,
     NgbModalModule,
+    NguiTabModule,
   ],
   declarations: [
     UsuarioComponent,
