@@ -1,55 +1,49 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppTranslationModule } from '../../app.translation.module';
-import { NgaModule } from '../../theme/nga.module';
+import { NgModule } from '@angular/core';
+import { AngularEchartsModule } from 'ngx-echarts';
 
-import { Dashboard } from './dashboard.component';
-import { routing }       from './dashboard.routing';
+import { ThemeModule } from '../../@theme/theme.module';
+import { DashboardComponent } from './dashboard.component';
+import { StatusCardComponent } from './status-card/status-card.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { RoomsComponent } from './rooms/rooms.component';
+import { RoomSelectorComponent } from './rooms/room-selector/room-selector.component';
+import { TemperatureComponent } from './temperature/temperature.component';
+import { TemperatureDraggerComponent } from './temperature/temperature-dragger/temperature-dragger.component';
+import { TeamComponent } from './team/team.component';
+import { KittenComponent } from './kitten/kitten.component';
+import { SecurityCamerasComponent } from './security-cameras/security-cameras.component';
+import { ElectricityComponent } from './electricity/electricity.component';
+import { ElectricityChartComponent } from './electricity/electricity-chart/electricity-chart.component';
+import { WeatherComponent } from './weather/weather.component';
+import { SolarComponent } from './solar/solar.component';
+import { PlayerComponent } from './rooms/player/player.component';
+import { TrafficComponent } from './traffic/traffic.component';
+import { TrafficChartComponent } from './traffic/traffic-chart.component';
 
-import { PopularApp } from './popularApp';
-import { PieChart } from './pieChart';
-import { TrafficChart } from './trafficChart';
-import { UsersMap } from './usersMap';
-import { LineChart } from './lineChart';
-import { Feed } from './feed';
-import { Todo } from './todo';
-import { Calendar } from './calendar';
-import { CalendarService } from './calendar/calendar.service';
-import { FeedService } from './feed/feed.service';
-import { LineChartService } from './lineChart/lineChart.service';
-import { PieChartService } from './pieChart/pieChart.service';
-import { TodoService } from './todo/todo.service';
-import { TrafficChartService } from './trafficChart/trafficChart.service';
-import { UsersMapService } from './usersMap/usersMap.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    AppTranslationModule,
-    NgaModule,
-    routing,
+    ThemeModule,
+    AngularEchartsModule,
   ],
   declarations: [
-    PopularApp,
-    PieChart,
-    TrafficChart,
-    UsersMap,
-    LineChart,
-    Feed,
-    Todo,
-    Calendar,
-    Dashboard,
-  ],
-  providers: [
-    CalendarService,
-    FeedService,
-    LineChartService,
-    PieChartService,
-    TodoService,
-    TrafficChartService,
-    UsersMapService,
+    DashboardComponent,
+    StatusCardComponent,
+    TemperatureDraggerComponent,
+    ContactsComponent,
+    RoomSelectorComponent,
+    TemperatureComponent,
+    RoomsComponent,
+    TeamComponent,
+    KittenComponent,
+    SecurityCamerasComponent,
+    ElectricityComponent,
+    ElectricityChartComponent,
+    WeatherComponent,
+    PlayerComponent,
+    SolarComponent,
+    TrafficComponent,
+    TrafficChartComponent,
   ],
 })
-export class DashboardModule {}
+export class DashboardModule { }
