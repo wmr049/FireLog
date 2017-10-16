@@ -345,9 +345,7 @@ describe('Users', () => {
             chai.request(server)
                 .post('/users')
                 .send(user)
-                .end((err, res) => {
-
-                    done();
+                .end((err, res) => {                    
                 });
 
             // Autentica o usuario
@@ -383,6 +381,49 @@ describe('Users', () => {
 
 
         })
-    })
+    });
+
+    // Validar o logout do usuario
+    describe('/POST/users/logout', () => {
+        it('Validar o logout do usuario', (done) => {
+
+
+            // Cria o usuario
+            const user = new User({
+                name: "Cora Lafe",
+                email: "coralafe@gmail.com",
+                password: "reis2000",
+                cpf: "30877030872"
+            });
+
+            chai.request(server)
+                .post('/users')
+                .send(user)
+                .end((err, res) => {                    
+                });
+
+            // Autentica o usuario
+            const userAuth = {
+                email: "coralafe@gmail.com",
+                password: "reis2000"
+            }
+
+            chai.request(server)
+                .post('/users/logout')
+                .send(userAuth)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('success').eql(true);
+                    res.body.should.have.property('data');
+
+                    
+
+                    done();
+                });
+
+
+        })
+    });
 
 });

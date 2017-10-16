@@ -40,7 +40,7 @@ var NbLogoutComponent = (function () {
 NbLogoutComponent = __decorate([
     Component({
         selector: 'nb-logout',
-        template: "\n    <div>Logging out, please wait...</div>\n  ",
+        template: "\n    <div>Saindo, por favor espere...</div>\n  ",
     }),
     __metadata("design:paramtypes", [NbAuthService,
         Router])

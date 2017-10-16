@@ -10,6 +10,7 @@ router.put('/:id', controller.put);
 
 router.post('/', controller.post);
 router.post('/authenticate', controller.authenticate);
+router.post('/logout', controller.logout);
 router.post('/refresh-token', authService.authorize, controller.refreshToken);
 
 router.get('/', controller.get);

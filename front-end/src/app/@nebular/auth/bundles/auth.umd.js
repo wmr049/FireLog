@@ -1240,7 +1240,7 @@ exports.NbLogoutComponent = (function () {
 exports.NbLogoutComponent = __decorate$9([
     _angular_core.Component({
         selector: 'nb-logout',
-        template: "\n    <div>Logging out, please wait...</div>\n  ",
+        template: "\n    <div>Saindo, por favor espere...</div>\n  ",
     }),
     __metadata$6("design:paramtypes", [exports.NbAuthService,
         _angular_router.Router])

@@ -10,6 +10,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { CoreModule } from './@core/core.module';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
@@ -35,18 +37,16 @@ import { NbAuthModule, NbEmailPassAuthProvider } from 'app/@nebular/auth';
         email: {
           service: NbEmailPassAuthProvider,
           config: {
-           
           },
         },
       },
-    }), 
-
+    }),
   ],
   bootstrap: [AppComponent],
   providers: [
     SeoService,
     AuthService,
-    { provide: APP_BASE_HREF, 
+    { provide: APP_BASE_HREF,
       useValue: '/' },
   ],
 })

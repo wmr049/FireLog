@@ -161,6 +161,47 @@ exports.post = async(req, res, next) => {
     }
 };
 
+exports.logout = async(req, res, next) => {
+    try {
+
+        const user = await repository.authenticate({
+            email: req.body.email,
+            password: md5(req.body.password + global.SALT_KEY)
+        });
+
+        if (!user) {
+            res.status(404).send({
+                success: false,
+                errors: 'Usuário ou senha inválidos'
+            });
+            return;
+        }
+
+        const token = await authService.logout({
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            cpf: user.cpf,
+            roles: user.roles
+        });
+
+
+
+        res.status(200).send({
+            success: true,
+            data: {
+                message: 'Usuario deslogado !!'
+            }                            
+        });
+        
+    } catch (e) {
+        res.status(500).send({
+            success: false,
+            errors: 'Falha ao processar sua requisição'
+        });
+    }
+}
+
 exports.authenticate = async(req, res, next) => {
     try {
 

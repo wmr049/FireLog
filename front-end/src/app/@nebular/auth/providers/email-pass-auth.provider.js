@@ -136,8 +136,8 @@ var NbEmailPassAuthProvider = (function (_super) {
                     success: '/',
                     failure: null,
                 },
-                defaultErrors: ['Login/Email combination is not correct, please try again.'],
-                defaultMessages: ['You have been successfully logged in.'],
+                defaultErrors: ['A combinação de login / e-mail não está correta, tente novamente.'],
+                defaultMessages: ['Você foi logado com sucesso.'],
             },
             register: {
                 alwaysFail: false,
@@ -148,8 +148,8 @@ var NbEmailPassAuthProvider = (function (_super) {
                     success: '/',
                     failure: null,
                 },
-                defaultErrors: ['Something went wrong, please try again.'],
-                defaultMessages: ['You have been successfully registered.'],
+                defaultErrors: ['Alguma coisa deu errado. Por favor tente outra vez.'],
+                defaultMessages: ['Você foi registrado com sucesso.'],
             },
             logout: {
                 alwaysFail: false,
@@ -159,8 +159,8 @@ var NbEmailPassAuthProvider = (function (_super) {
                     success: '/',
                     failure: null,
                 },
-                defaultErrors: ['Something went wrong, please try again.'],
-                defaultMessages: ['You have been successfully logged out.'],
+                defaultErrors: ['Alguma coisa deu errado. Por favor tente outra vez.'],
+                defaultMessages: ['Você foi desconectado com sucesso.'],
             },
             requestPass: {
                 endpoint: '/api/auth/request-pass',
@@ -169,8 +169,8 @@ var NbEmailPassAuthProvider = (function (_super) {
                     success: '/',
                     failure: null,
                 },
-                defaultErrors: ['Something went wrong, please try again.'],
-                defaultMessages: ['Reset password instructions have been sent to your email.'],
+                defaultErrors: ['Alguma coisa deu errado. Por favor tente outra vez.'],
+                defaultMessages: ['As instruções de reiniciar a senha foram enviadas para o seu email.'],
             },
             resetPass: {
                 endpoint: '/api/auth/reset-pass',
@@ -180,8 +180,8 @@ var NbEmailPassAuthProvider = (function (_super) {
                     failure: null,
                 },
                 resetPasswordTokenKey: 'reset_password_token',
-                defaultErrors: ['Something went wrong, please try again.'],
-                defaultMessages: ['Your password has been successfully changed.'],
+                defaultErrors: ['Alguma coisa deu errado. Por favor tente outra vez.'],
+                defaultMessages: ['Sua senha foi alterada com sucesso.'],
             },
             token: {
                 key: 'data.token',
@@ -223,7 +223,7 @@ var NbEmailPassAuthProvider = (function (_super) {
                 errors = _this.getConfigValue('errors.getter')('login', res);
             }
             else {
-                errors.push('Something went wrong.');
+                errors.push('Algo deu errado.');
             }
             return Observable.of(new NbAuthResult(false, res, _this.getConfigValue('login.redirect.failure'), errors));
         });
@@ -248,7 +248,7 @@ var NbEmailPassAuthProvider = (function (_super) {
                 errors = _this.getConfigValue('errors.getter')('register', res);
             }
             else {
-                errors.push('Something went wrong.');
+                errors.push('Algo deu errado.');
             }
             return Observable.of(new NbAuthResult(false, res, _this.getConfigValue('register.redirect.failure'), errors));
         });
@@ -273,7 +273,7 @@ var NbEmailPassAuthProvider = (function (_super) {
                 errors = _this.getConfigValue('errors.getter')('requestPass', res);
             }
             else {
-                errors.push('Something went wrong.');
+                errors.push('Algo deu errado.');
             }
             return Observable.of(new NbAuthResult(false, res, _this.getConfigValue('requestPass.redirect.failure'), errors));
         });
@@ -301,7 +301,7 @@ var NbEmailPassAuthProvider = (function (_super) {
                 errors = _this.getConfigValue('errors.getter')('resetPass', res);
             }
             else {
-                errors.push('Something went wrong.');
+                errors.push('Algo deu errado.');
             }
             return Observable.of(new NbAuthResult(false, res, _this.getConfigValue('resetPass.redirect.failure'), errors));
         });
@@ -332,7 +332,7 @@ var NbEmailPassAuthProvider = (function (_super) {
                 errors = _this.getConfigValue('errors.getter')('logout', res);
             }
             else {
-                errors.push('Something went wrong.');
+                errors.push('Algo deu errado.');
             }
             return Observable.of(new NbAuthResult(false, res, _this.getConfigValue('logout.redirect.failure'), errors));
         });
