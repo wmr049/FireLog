@@ -8,7 +8,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/throw';
 
 
-import { NbUser } from '@nebular/auth/models/user';
+import { NbUser } from 'app/@nebular/auth/models/user';
 
 export abstract class ServiceBase {
 

@@ -16,7 +16,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SeoService } from 'app/services/seo.services';
 import { AuthService } from 'app/services/auth.service';
-import { NbAuthModule, NbEmailPassAuthProvider } from '@nebular/auth';
+import { NbAuthModule, NbEmailPassAuthProvider } from 'app/@nebular/auth';
 
 @NgModule({
   declarations: [AppComponent],

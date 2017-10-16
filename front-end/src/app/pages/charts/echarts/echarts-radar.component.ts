@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService } from 'app/@nebular/theme';
 
 @Component({
   selector: 'ngx-echarts-radar',

@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { NbThemeService } from 'app/@nebular/theme';
 
 import { ElectricityService } from '../../../@core/data/electricity.service';
 

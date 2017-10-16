@@ -2,8 +2,8 @@
 @import 'themes';
 
 // framework component themes (styles tied to theme variables)
-@import '~@nebular/theme/styles/globals';
-@import '~@nebular/auth/styles/all';
+@import 'src/app/@nebular/theme/styles/globals';
+@import 'src/app/@nebular/auth/styles/all';
 
 // install the framework and custom global styles
 @include nb-install() {

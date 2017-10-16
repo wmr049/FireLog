@@ -1,7 +1,7 @@
 @import '../../../@theme/styles/themes';
-@import '~@nebular/theme/styles/global/bootstrap/buttons';
+@import 'src/app/@nebular/theme/styles/global/bootstrap/buttons';
 @import '~bootstrap/scss/mixins/breakpoints';
-@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+@import 'src/app/@nebular/theme/styles/global/bootstrap/breakpoints';
 
 @include nb-install-component() {
   /deep/ {
