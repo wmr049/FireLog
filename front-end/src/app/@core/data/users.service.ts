@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -19,7 +19,6 @@ export class UserService {
   private userArray: any[];
 
   constructor() {
-    // this.userArray = Object.values(this.users);
   }
 
   getUsers(): Observable<any> {
