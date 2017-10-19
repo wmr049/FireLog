@@ -14,7 +14,7 @@ export abstract class ServiceBase {
 
     token: string = '';
 
-    protected urlServiceV1: string = 'http://localhost:3000/';    
+    protected urlServiceV1: string = 'http://localhost:3000/';
 
     obterUsuario() {
         return JSON.parse(localStorage.getItem('eio.user'));

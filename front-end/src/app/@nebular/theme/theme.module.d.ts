@@ -17,5 +17,7 @@ export declare class NbThemeModule {
      *
      * @returns {ModuleWithProviders}
      */
-    static forRoot(nbThemeOptions: NbThemeOptions, nbJSThemes?: NbJSThemeOptions[], nbMediaBreakpoints?: NbMediaBreakpoint[]): ModuleWithProviders;
+    static forRoot(nbThemeOptions: NbThemeOptions,
+        nbJSThemes?: NbJSThemeOptions[],
+        nbMediaBreakpoints?: NbMediaBreakpoint[]): ModuleWithProviders;
 }
