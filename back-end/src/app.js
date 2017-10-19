@@ -77,11 +77,13 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', indexRoute);
-app.use('/logs', logRoute);
-app.use('/users', userRoute);
-app.use('/organizations', organizationRoute);
-app.use('/systems', systemRoute);
-app.use('/usersystemnotifications', userSystemNotificationRoute);
+const prefixUrlV1 = '/api/v1';
+
+app.use(prefixUrlV1 + '/', indexRoute);
+app.use(prefixUrlV1 + '/logs', logRoute);
+app.use(prefixUrlV1 + '/users', userRoute);
+app.use(prefixUrlV1 + '/organizations', organizationRoute);
+app.use(prefixUrlV1 + '/systems', systemRoute);
+app.use(prefixUrlV1 + '/usersystemnotifications', userSystemNotificationRoute);
 
 module.exports = app;
