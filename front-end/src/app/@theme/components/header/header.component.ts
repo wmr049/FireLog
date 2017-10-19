@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  userMenu = [{ title: 'Perfil' }, { title: 'Sair' }];
+  userMenu = [{ title: 'Perfil', url: '' },
+              { title: 'Sair' , url: '/#/auth/logout'}];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -25,8 +26,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers()
-      .subscribe((users: any) => this.user = users.nick);
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('eio.user'));
+
+    this.user = {name: usuarioLogado.nome , picture: 'assets/images/avatar.png' };
   }
 
   toggleSidebar(): boolean {
