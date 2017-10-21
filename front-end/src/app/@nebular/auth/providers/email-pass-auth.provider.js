@@ -130,7 +130,7 @@ var NbEmailPassAuthProvider = (function (_super) {
             login: {
                 alwaysFail: false,
                 rememberMe: true,
-                endpoint: 'users/authenticate',
+                endpoint: 'api/v1/users/authenticate',
                 method: 'post',
                 redirect: {
                     success: '/',
@@ -142,7 +142,7 @@ var NbEmailPassAuthProvider = (function (_super) {
             register: {
                 alwaysFail: false,
                 rememberMe: true,
-                endpoint: '/api/auth/register',
+                endpoint: 'api/v1/users',
                 method: 'post',
                 redirect: {
                     success: '/',
@@ -153,7 +153,7 @@ var NbEmailPassAuthProvider = (function (_super) {
             },
             logout: {
                 alwaysFail: false,
-                endpoint: '/api/auth/logout',
+                endpoint: 'api/v1/users/logout',
                 method: 'delete',
                 redirect: {
                     success: '/',
