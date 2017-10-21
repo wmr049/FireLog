@@ -17,7 +17,12 @@ export declare class NbAuthResult {
     protected token: any;
     protected errors: string[];
     protected messages: string[];
-    constructor(success: boolean, response?: any, redirect?: any, errors?: any, messages?: any, token?: NbAuthSimpleToken);
+    constructor(success: boolean,
+        response?: any,
+        redirect?: any,
+        errors?: any,
+        messages?: any,
+        token?: NbAuthSimpleToken);
     getResponse(): any;
     getTokenValue(): any;
     replaceToken(token: NbAuthSimpleToken): any;

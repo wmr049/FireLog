@@ -3,7 +3,12 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-import { AfterViewInit, ComponentFactoryResolver, ElementRef, OnDestroy, Renderer2, ViewContainerRef } from '@angular/core';
+import { AfterViewInit,
+    ComponentFactoryResolver,
+    ElementRef,
+    OnDestroy,
+    Renderer2,
+    ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/toPromise';
@@ -176,7 +181,11 @@ export declare class NbLayoutComponent implements OnDestroy, AfterViewInit {
     protected themeSubscription: Subscription;
     protected appendSubscription: Subscription;
     protected clearSubscription: Subscription;
-    constructor(themeService: NbThemeService, spinnerService: NbSpinnerService, componentFactoryResolver: ComponentFactoryResolver, elementRef: ElementRef, renderer: Renderer2);
+    constructor(themeService: NbThemeService,
+        spinnerService: NbSpinnerService,
+        componentFactoryResolver: ComponentFactoryResolver,
+        elementRef: ElementRef,
+        renderer: Renderer2);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     onResize(event: any): void;

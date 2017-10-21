@@ -3,7 +3,13 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-import { EventEmitter, ElementRef, AfterViewInit, ComponentFactoryResolver, ViewContainerRef, OnDestroy, OnInit } from '@angular/core';
+import { EventEmitter,
+    ElementRef,
+    AfterViewInit,
+    ComponentFactoryResolver,
+    ViewContainerRef,
+    OnDestroy,
+    OnInit } from '@angular/core';
 import { NbSearchService } from './search.service';
 import { NbThemeService } from '../../services/theme.service';
 import { Observable } from 'rxjs/Observable';
@@ -78,7 +84,10 @@ export declare class NbSearchComponent implements OnInit, AfterViewInit, OnDestr
     private activateSearchSubscription;
     private deactivateSearchSubscription;
     private routerSubscription;
-    constructor(searchService: NbSearchService, themeService: NbThemeService, componentFactoryResolver: ComponentFactoryResolver, router: Router);
+    constructor(searchService: NbSearchService,
+        themeService: NbThemeService,
+        componentFactoryResolver: ComponentFactoryResolver,
+        router: Router);
     /**
      * Search design type, available types are
      * modal-zoomin, rotate-layout, modal-move, curtain, column-curtain, modal-drop, modal-half
