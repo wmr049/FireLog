@@ -27,7 +27,7 @@ describe('Users', () => {
     describe('/GET users', () => {
         it('Validar serviço ativo e sem dados na collection user.', (done) => {
             chai.request(server)
-                .get('/users')
+                .get('/api/v1/users')
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
@@ -62,7 +62,7 @@ describe('Users', () => {
 
 
             chai.request(server)
-                .get('/users/')
+                .get('/api/v1/users/')
                 .end((err, res) => {
 
                     res.should.have.status(200);
@@ -116,7 +116,7 @@ describe('Users', () => {
 
 
             chai.request(server)
-                .get('/users/2/1')
+                .get('/api/v1/users/2/1')
                 .end((err, res) => {
 
                     res.should.have.status(200);
@@ -143,7 +143,7 @@ describe('Users', () => {
 
             user.save((err, user) => {
                 chai.request(server)
-                    .get('/users/' + user.id)
+                    .get('/api/v1/users/' + user.id)
                     .send(user)
                     .end((err, res) => {
 
@@ -177,7 +177,7 @@ describe('Users', () => {
             }
 
             chai.request(server)
-                .post('/users')
+                .post('/api/v1/users')
                 .send(user)
                 .end((err, res) => {
                     res.should.have.status(400);
@@ -210,7 +210,7 @@ describe('Users', () => {
             }
 
             chai.request(server)
-                .post('/users')
+                .post('/api/v1/users')
                 .send(user)
                 .end((err, res) => {
                     res.should.have.status(201);
@@ -252,7 +252,7 @@ describe('Users', () => {
 
             user.save((err, user) => {
                 chai.request(server)
-                    .put('/users/' + user.id)
+                    .put('/api/v1/users/' + user.id)
                     .send({
                         name: "Milton O. Reis",
                         email: "milton.oliveira.reis@hotmail.com",
@@ -304,13 +304,13 @@ describe('Users', () => {
 
 
             chai.request(server)
-                .post('/users')
+                .post('/api/v1/users')
                 .send(user)
                 .end((err, res) => {
                     token = res.body.data.token;
 
                     chai.request(server)
-                        .post('/users/refresh-token')
+                        .post('/api/v1/users/refresh-token')
                         .set('x-access-token', token)
                         .end((err, res) => {                            
                             tokenRefresh = res.body.data.token;
@@ -343,7 +343,7 @@ describe('Users', () => {
             });
 
             chai.request(server)
-                .post('/users')
+                .post('/api/v1/users')
                 .send(user)
                 .end((err, res) => {                    
                 });
@@ -355,7 +355,7 @@ describe('Users', () => {
             }
 
             chai.request(server)
-                .post('/users/authenticate')
+                .post('/api/v1/users/authenticate')
                 .send(userAuth)
                 .end((err, res) => {
                     res.should.have.status(201);
@@ -388,6 +388,9 @@ describe('Users', () => {
         it('Validar o logout do usuario', (done) => {
 
 
+            var token = '';
+            var tokenRefresh = '';
+
             // Cria o usuario
             const user = new User({
                 name: "Cora Lafe",
@@ -396,30 +399,25 @@ describe('Users', () => {
                 cpf: "30877030872"
             });
 
+
             chai.request(server)
-                .post('/users')
+                .post('/api/v1/users')
                 .send(user)
-                .end((err, res) => {                    
-                });
-
-            // Autentica o usuario
-            const userAuth = {
-                email: "coralafe@gmail.com",
-                password: "reis2000"
-            }
-
-            chai.request(server)
-                .post('/users/logout')
-                .send(userAuth)
                 .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('success').eql(true);
-                    res.body.should.have.property('data');
+                    token = res.body.data.token;
 
-                    
+                    chai.request(server)
+                        .delete('/api/v1/users')
+                        .set('x-access-token', token)
+                        .end((err, res) => {                            
+                            tokenRefresh = res.body.data.token;
 
-                    done();
+                            res.should.have.status(200);
+                            
+
+
+                            done();
+                        });
                 });
 
 

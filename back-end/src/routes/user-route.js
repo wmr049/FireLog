@@ -9,8 +9,9 @@ const authService = require('../services/auth-service');
 router.put('/:id', controller.put);
 
 router.post('/', controller.post);
+router.delete('/', controller.logout);
+
 router.post('/authenticate', controller.authenticate);
-router.post('/logout', controller.logout);
 router.post('/refresh-token', authService.authorize, controller.refreshToken);
 
 router.get('/', controller.get);
