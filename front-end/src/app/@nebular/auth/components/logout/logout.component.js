@@ -26,14 +26,21 @@ var NbLogoutComponent = (function () {
     };
     NbLogoutComponent.prototype.logout = function (provider) {
         var _this = this;
-        this.service.logout(provider).subscribe(function (result) {
-            var redirect = result.getRedirect();
-            if (redirect) {
-                setTimeout(function () {
-                    return _this.router.navigateByUrl(redirect);
-                }, _this.redirectDelay);
-            }
-        });
+
+        localStorage.removeItem('auth_app_token');
+        localStorage.removeItem('eio.token');
+        localStorage.removeItem('eio.user');
+
+        _this.router.navigateByUrl('/');
+
+        // this.service.logout(provider).subscribe(function (result) {
+        //     var redirect = result.getRedirect();
+        //     if (redirect) {
+        //         setTimeout(function () {
+        //             return _this.router.navigateByUrl(redirect);
+        //         }, _this.redirectDelay);
+        //     }
+        // });
     };
     return NbLogoutComponent;
 }());

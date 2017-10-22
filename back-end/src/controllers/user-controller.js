@@ -115,14 +115,13 @@ exports.post = async(req, res, next) => {
     let contract = new ValidationContract();
 
     contract.isRequired(req.body.password, 'É necessario informar a senha');
-    contract.isRequired(req.body.name, 'É necessario informar o nome');
+    contract.isRequired(req.body.fullName, 'É necessario informar o nome');
     contract.isRequired(req.body.email, 'É necessario informar o email');
-    contract.isRequired(req.body.cpf, 'É necessario informar o CPF');
+
 
     contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres');
-    contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.fullName, 3, 'O nome deve conter pelo menos 3 caracteres');
     contract.hasMinLen(req.body.email, 6, 'O email deve conter pelo menos 6 caracteres');
-    contract.hasMinLen(req.body.cpf, 11, 'O CPF deve conter pelo menos 11 caracteres');
 
     contract.isEmail(req.body.email, 'E-mail inválido');
 
@@ -139,17 +138,16 @@ exports.post = async(req, res, next) => {
 
     try {
         await repository.create({
-            name: req.body.name,
+            name: req.body.fullName,
             email: req.body.email,
-            password: md5(req.body.password + global.SALT_KEY),
-            cpf: req.body.cpf,
+            password: md5(req.body.password + global.SALT_KEY),            
             roles: ["user"]
         });
 
         emailService.send(
             req.body.email,
             'Bem vindo ao Firelog',
-            global.EMAIL_TMPL.replace('{0}', req.body.name));
+            global.EMAIL_TMPL.replace('{0}', req.body.fullName));
 
         this.authenticate(req, res, next);
 
