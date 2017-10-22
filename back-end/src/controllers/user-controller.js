@@ -164,14 +164,7 @@ exports.post = async(req, res, next) => {
 exports.logout = async(req, res, next) => {
     try {
 
-        const data = await authService.logout(req, res, next);
-
-        res.status(200).send({
-            success: true,
-            data: {
-                message: data
-            }                            
-        });
+        await authService.logout(req, res, next);        
         
     } catch (e) {
         res.status(500).send({

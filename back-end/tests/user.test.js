@@ -312,7 +312,7 @@ describe('Users', () => {
                     chai.request(server)
                         .post('/api/v1/users/refresh-token')
                         .set('x-access-token', token)
-                        .end((err, res) => {                            
+                        .end((err, res) => {
                             tokenRefresh = res.body.data.token;
 
                             res.should.have.status(201);
@@ -345,7 +345,7 @@ describe('Users', () => {
             chai.request(server)
                 .post('/api/v1/users')
                 .send(user)
-                .end((err, res) => {                    
+                .end((err, res) => {
                 });
 
             // Autentica o usuario
@@ -409,11 +409,12 @@ describe('Users', () => {
                     chai.request(server)
                         .delete('/api/v1/users')
                         .set('x-access-token', token)
-                        .end((err, res) => {                            
-                            tokenRefresh = res.body.data.token;
+                        .end((err, res) => {
 
                             res.should.have.status(200);
-                            
+                            res.body.should.be.a('object');
+                            res.body.should.have.property('success').eql(true);
+                            res.body.should.have.property('data');
 
 
                             done();

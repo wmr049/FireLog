@@ -2,52 +2,61 @@
 const jwt = require('jsonwebtoken');
 const jwtBlacklist = require('jwt-blacklist')(jwt);
 
+//configura a blacklist
 jwtBlacklist.config({
     maxBlacklistPerUnit: 100000,
     error: 0.00001,
     unitType: 'h',
-    expiresDuration: '12'
+    expiresDuration: 24
 });
 
-exports.logout = async(req, res, next) => {
+exports.logout = async (req, res, next) => {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-    var response = {}
-
     if (!token) {
-        response: {
-            status: true
-            message: 'Token não encontrado'
-        }
+
+        res.status(404).send({
+            success: true,
+            data: {
+                message: 'Token não encontrado'
+            }
+        });
+
     }
     else {
 
 
         await jwt.verify(token, global.SALT_KEY, function (error, decoded) {
             if (error) {
-                res.status(200).json({
-                    status: true,
-                    message: 'Token invalido'
+                res.status(401).send({
+                    success: true,
+                    data: {
+                        message: 'Token Invalido'
+                    }
                 });
-
-            } else {
-
-                
             }
         });
 
     }
 
-    return response;
+    var data = await jwtBlacklist.blacklist(token, global.SALT_KEY);
+
+    res.status(200).send({
+        success: data,
+        data: {
+            message: 'Token desconectado'
+        }
+    });
+
 }
 
-exports.generateToken = async(data) => {
+exports.generateToken = async (data) => {
     return jwt.sign(data, global.SALT_KEY, {
         expiresIn: '1d'
     });
 }
 
-exports.decodeToken = async(token) => {
+exports.decodeToken = async (token) => {
     var data = await jwt.verify(token, global.SALT_KEY);
     return data;
 }

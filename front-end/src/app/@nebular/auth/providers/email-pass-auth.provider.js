@@ -153,7 +153,7 @@ var NbEmailPassAuthProvider = (function (_super) {
             },
             logout: {
                 alwaysFail: false,
-                endpoint: 'api/v1/users/logout',
+                endpoint: 'api/v1/users',
                 method: 'delete',
                 redirect: {
                     success: '/',
