@@ -8,10 +8,25 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: 'FEATURES',
+    title: 'FUNCIONALIDADES',
     group: true,
   },
   {
+    title: 'Gerenciador',
+    icon: 'fa fa fa-bug',
+    link: '/pages/dashboard',
+    children: [
+      {
+        title: 'Organização',
+        link: '/pages/ui-features/buttons',
+      },
+      {
+        title: 'Sistemas',
+        link: '/pages/ui-features/grid',
+      }
+    ]
+  },
+  /*{
     title: 'UI Features',
     icon: 'nb-keypad',
     link: '/pages/ui-features',
@@ -155,4 +170,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  */
 ];
